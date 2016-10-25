@@ -1,0 +1,24 @@
+<ion-modal-view>
+<ion-header-bar class="bar bar-header bar-energized-100">
+      <h1 class="title">Crie sua Lista</h1>
+</ion-header-bar>
+<ion-content class="padding">
+
+<div class="list">
+  <label class="item item-input item-stacked-label">
+    <span class="input-label">Nome da Lista</span>
+    <input type="text" placeholder="Lista" ng-model="listaCtrl.nomeLista">
+  </label>
+  <div class="row">
+    <div class="col">
+        <button class="button button-full button-energized-100" ng-click="listaCtrl.criarLista()">Criar</button>
+    </div>
+    <div class="col">
+        <button class="button button-full button-energized-100" ng-click="modal.hide()">Cancelar</button>
+    </div>
+
+</div>
+  
+</div>
+</ion-content>
+</ion-modal-view>

@@ -1,0 +1,23 @@
+{
+	"supermercados" : [{
+		"id" : 1,
+		"nome" : "Carrefour",
+		"url" : "img/carre.jpg"
+	},
+	{
+		"id" : 2,
+		"nome" : "Extra",
+		"url" : "img/extra.jpg"
+	},
+	{
+		"id" : 3,
+		"nome" : "Hiper Bompreço",
+		"url" : "img/hiperl.png"
+	},
+	{
+		"id" : 4,
+		"nome" : "Deskontão",
+		"url" : "img/deskontao.jpg"
+	}
+	]	
+}

@@ -1,0 +1,64 @@
+
+.menu-left .list .item {
+    border-bottom: 1px solid;
+    border-top: 1px solid;
+    border-color: #d4d8e2;
+}
+
+.menu-left .item-complex .item-content, .menu-left .item-radio .item-content {
+    background-color: #f2f4f9;
+}
+
+.menu .icon {
+    font-size: 20px;
+    color : #52607b;
+}
+.expandedme {
+    min-height: 80px;
+}
+.has-expandedme {
+    top: 80px !important; 
+}
+.background-bar {
+    background-color: #d2d1d8 !important;
+}
+.background-bar-mid {
+    background-color: #f3f2f7 !important;
+}
+.bar .button.icon-color{
+    color: #d69a65 !important;
+}
+
+.tab-color div{
+    background-color: #dad5f5 !important;
+}
+
+.button.button-color-mk {
+    background-color: #d69a65 !important;
+}
+
+.button.icon-color-mk {
+    color: #d69a65 !important;
+}
+.text-supermercado {
+    color: #52607b;
+    font-size: 30px;
+    background-color: #dad5f5;
+    width: 100%;
+    min-height: 400px;
+}
+
+.button-new-back {
+    border-radius: 2px;
+    border: none;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16),0 2px 10px 0 10px 0 rg:rgba(0,0,0,.12);
+}
+.thumb-custom{
+    top: 0px !important;
+    left: 0px !important;
+    max-width: 50px !important;
+    max-height: 50px !important;
+}
+/*.item.activated.animated-item{
+  background-color: #c5baba !important;
+}*/
