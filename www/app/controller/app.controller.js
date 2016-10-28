@@ -22,8 +22,8 @@
 						$openFB.api({path: '/me'})
 				        .then(function(user) {
 				            vm.user = user;
-				        }
-				        , function(err) {
+				        }, 
+				        function(err) {
 				            alert('Facebook error: ' + err);
 				        });
 
@@ -39,8 +39,7 @@
 				            var me = {};
 				            angular.extend(me, {picture: res.data.url});
 				            vm.urlPicture = me.picture;
-				        }
-				        , function(err) {
+				        }, function(err) {
 				            alert('Facebook error: ' + err);
 				        });
 

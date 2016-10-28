@@ -25,16 +25,7 @@
 
             function login(user, password){
 
-
-                $http.get('http://192.168.43.248:8080/MD_WEB/rest/usuario/listarTodosUsuarios').then( 
-                    function success(response){
-
-                    },
-                    function error(error){
-
-                    }
-                );
-                 
+                
                 if(user === "eu@eu.com" && password ==="1234"){
                     $rootScope.$broadcast("login", {loginType : Constants.NM_LOGIN});
                     
@@ -54,12 +45,7 @@
 
         
             }
-
-            
-
-            
-
-            function init(){
+           function init(){
 
 
 

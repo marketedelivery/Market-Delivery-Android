@@ -1,4 +1,4 @@
-
+/*
 .menu-left .list .item {
     border-bottom: 1px solid;
     border-top: 1px solid;
@@ -7,7 +7,7 @@
 
 .menu-left .item-complex .item-content, .menu-left .item-radio .item-content {
     background-color: #f2f4f9;
-}
+}*/
 
 .menu .icon {
     font-size: 20px;
@@ -20,7 +20,9 @@
     top: 80px !important; 
 }
 .background-bar {
-    background-color: #d2d1d8 !important;
+    background-color: #f5f2f9;
+    width: 100%;
+    border: none;
 }
 .background-bar-mid {
     background-color: #f3f2f7 !important;
@@ -62,3 +64,12 @@
 /*.item.activated.animated-item{
   background-color: #c5baba !important;
 }*/
+.modal{
+  top: 20% !important;
+  right: 20% !important;
+  bottom: 20% !important;
+  left: 20% !important;
+  overflow: visible !important;
+  min-height: 240px !important;
+  width: 60% !important;
+}

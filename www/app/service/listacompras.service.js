@@ -8,21 +8,25 @@
 
         function listacomprasService($http, configurationUrl ){
 
-        var url = configurationUrl.url + '/listacompras';
+        var url = configurationUrl.url;
 
         var exports = {
-            criarListaCompras: criarListaCompras
+            criarListaCompras: criarListaCompras,
+            listaCompras: listaCompras
         };
 
         return exports;
 
         function criarListaCompras(params){
-        	// return $http.get('/supermercados');
-        	// return $http.get(url);
-            // return $http.post();
-            return $http.get('app/mocks/supermercados.json');
+            return $http.post(url + "/criarlistacompras", params, {
+                headres : {
+                    "Content-Type": "application/json"
+            }
+        });
+        }
 
-
+        function listaCompras(){
+            return $http.get(url + "/listacompras");
         }
 
 

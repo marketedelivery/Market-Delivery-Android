@@ -1,18 +1,16 @@
 <ion-view>
 <ion-content class="padding">
-<h1>Listas de Compras</h1>
 <ion-list>
   <ion-item ng-repeat="item in listaCtrl.listas" ng-click="">
-    <h2 ng-bind="item.nomeLista"></h2>
+    <h2 ng-bind="item.nome"></h2>
     <span class="item-note">15/10/2016</span>
   </ion-item>
 </ion-list>
 </ion-content>
-<div class="bar bar-footer bar-energized-100">
+<div class="bar bar-footer bar-stable">
 	<div class="buttons buttons-right">
-		<button class="button button-energized-900 button-fab" ng-click="listaCtrl.adicionarLista()">
-		<i class="icon ion-plus light"></i>
-		</button>
+		<button class="button button-clear button-stable" ng-click="listaCtrl.openModal()">
+		<i class="icon ion-android-add-circle"></i> Adicionar</button>
 	</div>
 </div>
 </ion-view>

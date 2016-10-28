@@ -1,23 +1,14 @@
 <ion-view>
   <ion-content class="padding">
     <div class="list">
-      <div class="item item-input">
         <button class="button button-full button-positive" ng-click="loginCtrl.fBLogin(newUser)">Facebook</button>
-      </div>
-
-      <div class="item item-input">
         <button class="button button-full button-positive" ng-click="login(newUser)">Google+</button>
-      </div>
-
       <div class="item item-input" ng-show="loginCtrl.isShowForm">
-
         <div class="list">
                 <label class="item item-input">
-                    
                     <input type="text" ng-model="loginCtrl.username" placeholder="Nome do Usuário">
                 </label>
                 <label class="item item-input">
-                    
                     <input type="password" ng-model="loginCtrl.password" placeholder="Senha">
                 </label>
                 <label class="item">
@@ -29,10 +20,7 @@
             </div>
 
       </div>
-      <div class="item item-input">
       <button class="button button-full button-color-mk" ng-click="loginCtrl.showForm()">Entre com a sua conta</button>
-      </div>
-
     </div>
   </ion-content>
 </ion-view>

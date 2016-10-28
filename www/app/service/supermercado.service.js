@@ -18,7 +18,7 @@
 
         function listarSupermercado(params) {
 
-            return $http.get('app/mocks/supermercados.json');
+            return $http.get(url, params);
 
         }
 
