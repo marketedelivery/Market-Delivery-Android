@@ -1,0 +1,40 @@
+<ion-modal-view class="ion-nifty-modal" style="
+    width: 100%; min-height: 0 !important; height: 100%!important; top: 0%;left: 0%; right: 5%; bottom: 5%;
+    background-color: transparent;
+    border-radius: 0px;">
+  <ion-header-bar>
+    <button class="button button-icon icon-color button-clear ion-android-arrow-back" ng-click="loginCtrl.cancelar()"> </button>
+    <h1 class="title">Novo Usuário</h1> </ion-header-bar>
+  <div class="ion-modal-content-custom" style="background-color: #fafafa">
+    <ion-content class="padding" style="overflow-y: hidden;">
+      <!-- <div class="list" style="width : 100%;">
+      <a class="item item-avatar background-bar">
+        <img ng-src="{{appCtrl.urlPicture}}">
+        <h2>{{appCtrl.user.name}}</h2>
+      </a>
+      </div> -->
+      <div class="list">
+        <label class="item item-input">
+          <input type="text" ng-model="loginCtrl.usuario.nome" placeholder="Nome"> </label>
+        <label class="item item-input">
+          <input type="text" ng-model="loginCtrl.usuario.email" placeholder="Email"> </label>
+        <label class="item item-input">
+          <input type="password" ng-model="loginCtrl.usuario.senha" placeholder="Senha"> </label>
+        <label class="item item-input">
+          <input type="password" ng-model="loginCtrl.confsenha" placeholder="Confirmar Senha"> </label>
+        <div class="row">
+          <div class="col">
+            <button class="button button-block button-stable" type="button" ng-click="loginCtrl.cadastrarUsuario()">Salvar</button>
+          </div>
+          <div class="col">
+            <button class="button button-block button-stable" type="button" ng-click="loginCtrl.cancelar()">Cancelar</button>
+          </div>
+        </div>
+      </div>
+      <!-- <label class="item item-input item-stacked-label">
+          <span class="input-label">Email</span>
+          <input type="email" ng-model="appCtrl.email">
+        </label> -->
+    </ion-content>
+  </div>
+</ion-modal-view>

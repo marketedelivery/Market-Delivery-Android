@@ -1,0 +1,38 @@
+<ion-modal-view class="ion-nifty-modal" style="
+    width: 100%; min-height: 0 !important; height: 100%!important; top: 0%;left: 0%; right: 5%; bottom: 5%;
+    background-color: transparent;
+    border-radius: 0px;">
+    <ion-header-bar>
+      <button class="button button-icon icon-color button-clear ion-android-arrow-back" ng-click="listaCtrl.cancelar(listaCtrl.detalheMod)"> </button>
+    </ion-header-bar>
+<div class="ion-modal-content-custom" style="background-color: #fafafa">
+<ion-content class="padding">
+<div class="list">
+    <div class="item item-avatar item-detalhe">
+      <img class="list-icon" ng-src="img/listicon.png">
+      <h3 ng-bind="listaformCtrl.lista.nome"></h3>
+      <p>{{listaformCtrl.lista.dataCriacao | date : 'dd/MM/yyyy'}}</p>
+    </div>
+</div>
+<div class="list">
+  <div class="item item-input-inset">
+    <label class="item-input-wrapper">
+      <input type="text" placeholder="Produtos">
+    </label>
+    <button class="button button-small">
+      <i class="icon ion-search"></i>
+    </button>
+  </div>
+</div>
+<!-- <div class="row" style="flex-wrap: wrap;">
+    <div class="col col-50" ng-repeat="produto in listaformCtrl.produtos">
+        <div class="list card  stable-bg" >
+			<div class="item item-body">
+				<img ng-src="{{produto.src}}" width="80px" height="80px">
+			</div>
+			</div>
+    </div>
+</div> -->
+</ion-content>
+</div>
+</ion-modal-view>

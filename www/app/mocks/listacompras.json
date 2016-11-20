@@ -1,0 +1,164 @@
+[
+  {
+    "codigo": 26,
+    "dataCriacao": "2016-10-30",
+    "nome": "Lista 03",
+    "qtd": 30,
+    "tipo": "Mensal",
+    "usuario": {
+      "codigo": 27,
+      "cpf": "443.789.544-99",
+      "email": "novo@gmail.com",
+      "endereco": {
+        "bairro": "Centro",
+        "cep": "62668-360",
+        "cidade": "Cabo de Santo Agostinho",
+        "codigo": 17,
+        "complemento": "Casa",
+        "estado": "PE",
+        "logradouro": "Rua Dois",
+        "numero": 2
+      },
+      "nome": "novo",
+      "perfil": "Usuário",
+      "senha": "novo123",
+      "telefone": "(81) 4444-8889",
+      "telefoneWhatsapp": "(81) 9 8332-6112"
+    }
+  },
+  {
+    "codigo": 46,
+    "dataCriacao": "2016-11-11",
+    "nome": "My List",
+    "qtd": 5,
+    "tipo": "Mensal",
+    "usuario": {
+      "codigo": 1,
+      "cpf": "123.456.789-00",
+      "email": "eu@gmail.com",
+      "endereco": {
+        "bairro": "Leblon",
+        "cep": "55000-000",
+        "cidade": "Rio de Janeiro",
+        "codigo": 1,
+        "complemento": "Apt.1200",
+        "estado": "RJ",
+        "logradouro": "Av. Rio Branco",
+        "numero": 1800
+      },
+      "nome": "Audry",
+      "perfil": "Administrador",
+      "senha": "123",
+      "telefone": "(81) 3333-4444",
+      "telefoneWhatsapp": "(81) 9 9999-9999"
+    }
+  },
+  {
+    "codigo": 63,
+    "dataCriacao": "2016-11-11",
+    "nome": "Lista03",
+    "qtd": 3,
+    "tipo": "Semanal",
+    "usuario": {
+      "codigo": 1,
+      "cpf": "123.456.789-00",
+      "email": "eu@gmail.com",
+      "endereco": {
+        "bairro": "Leblon",
+        "cep": "55000-000",
+        "cidade": "Rio de Janeiro",
+        "codigo": 1,
+        "complemento": "Apt.1200",
+        "estado": "RJ",
+        "logradouro": "Av. Rio Branco",
+        "numero": 1800
+      },
+      "nome": "Audry",
+      "perfil": "Administrador",
+      "senha": "123",
+      "telefone": "(81) 3333-4444",
+      "telefoneWhatsapp": "(81) 9 9999-9999"
+    }
+  },
+  {
+    "codigo": 65,
+    "dataCriacao": "2016-11-11",
+    "nome": "Lista04",
+    "qtd": 5,
+    "tipo": "Semanal",
+    "usuario": {
+      "codigo": 1,
+      "cpf": "123.456.789-00",
+      "email": "eu@gmail.com",
+      "endereco": {
+        "bairro": "Leblon",
+        "cep": "55000-000",
+        "cidade": "Rio de Janeiro",
+        "codigo": 1,
+        "complemento": "Apt.1200",
+        "estado": "RJ",
+        "logradouro": "Av. Rio Branco",
+        "numero": 1800
+      },
+      "nome": "Audry",
+      "perfil": "Administrador",
+      "senha": "123",
+      "telefone": "(81) 3333-4444",
+      "telefoneWhatsapp": "(81) 9 9999-9999"
+    }
+  },
+  {
+    "codigo": 71,
+    "dataCriacao": "2016-11-11",
+    "nome": "Lista05",
+    "qtd": 3,
+    "tipo": "Mensal",
+    "usuario": {
+      "codigo": 1,
+      "cpf": "123.456.789-00",
+      "email": "eu@gmail.com",
+      "endereco": {
+        "bairro": "Leblon",
+        "cep": "55000-000",
+        "cidade": "Rio de Janeiro",
+        "codigo": 1,
+        "complemento": "Apt.1200",
+        "estado": "RJ",
+        "logradouro": "Av. Rio Branco",
+        "numero": 1800
+      },
+      "nome": "Audry",
+      "perfil": "Administrador",
+      "senha": "123",
+      "telefone": "(81) 3333-4444",
+      "telefoneWhatsapp": "(81) 9 9999-9999"
+    }
+  },
+  {
+    "codigo": 75,
+    "dataCriacao": "2016-11-11",
+    "nome": "Lista Clebson",
+    "qtd": 12,
+    "tipo": "Mensal",
+    "usuario": {
+      "codigo": 1,
+      "cpf": "123.456.789-00",
+      "email": "eu@gmail.com",
+      "endereco": {
+        "bairro": "Leblon",
+        "cep": "55000-000",
+        "cidade": "Rio de Janeiro",
+        "codigo": 1,
+        "complemento": "Apt.1200",
+        "estado": "RJ",
+        "logradouro": "Av. Rio Branco",
+        "numero": 1800
+      },
+      "nome": "Audry",
+      "perfil": "Administrador",
+      "senha": "123",
+      "telefone": "(81) 3333-4444",
+      "telefoneWhatsapp": "(81) 9 9999-9999"
+    }
+  }
+]

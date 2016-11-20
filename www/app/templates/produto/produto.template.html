@@ -1,0 +1,31 @@
+<ion-view>
+  <div class="bar bar-subheader">
+      <div class="item item-input-inset" style="border-radius: 5px;
+    width: 100%;">
+        <label style="width: 100%">
+            <input type="search" name="name" style="width: 100%;"/>
+        </label>
+        <button class="button button-icon icon-color button-small ion-search"></button>
+      </div>
+  </div>
+  <ion-content class="has-subheader">
+    <!-- <div class="row" style="flex-wrap: wrap;">
+        <div class="col col-50" collection-repeat="produto in produtoCtrl.produtos">
+            <div class="list card  stable-bg" >
+    			<div class="item item-body">
+    				<img ng-src="{{produto.src}}" width="80px" height="80px">
+    			</div>
+    			</div>
+        </div>
+    </div> -->
+    <div class="list">
+        <div class="item" collection-repeat="produto in produtoCtrl.produtos">
+            <div class="list card  stable-bg" >
+    			<div class="item item-body">
+    				<img ng-src="{{produto.src}}" width="80px" height="80px">
+    			</div>
+    			</div>
+        </div>
+    </div>
+  </ion-content>
+</ion-view>

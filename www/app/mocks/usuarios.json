@@ -1,0 +1,38 @@
+[
+	{
+		"codigo": 1,
+		"CPF": "123.456.789-00",
+		"Email": "eu@gmail.com",
+		"nome": "Audry",
+		"perfil": "Administrador",
+		"Senha": "123",
+		"Telefone": "(81) 3333-4444",
+		"telefoneWhatsapp": "(81) 9 9999-9999",
+		"endereco_codigo": 1,
+		"codigo_facebook": "1234"
+	},
+	{
+		"codigo": 3,
+		"CPF": "111.999.888-77",
+		"Email": "dk@gmail.com",
+		"nome": "DK",
+		"perfil": "Usuário",
+		"Senha": "dk123",
+		"Telefone": "(81) 4222-9888",
+		"telefoneWhatsapp": "(81) 9 9949-5955",
+		"endereco_codigo": 5,
+		"codigo_facebook": null
+	},
+	{
+		"codigo": 27,
+		"CPF": "443.789.544-99",
+		"Email": "novo@gmail.com",
+		"nome": "novo",
+		"perfil": "Usuário",
+		"Senha": "novo123",
+		"Telefone": "(81) 4444-8889",
+		"telefoneWhatsapp": "(81) 9 8332-6112",
+		"endereco_codigo": 17,
+		"codigo_facebook": null
+	}
+]

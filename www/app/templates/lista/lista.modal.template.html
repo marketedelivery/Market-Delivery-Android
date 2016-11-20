@@ -1,0 +1,37 @@
+<ion-modal-view class="ion-nifty-modal">
+<div class="ion-modal-content-custom">
+  <ion-content class="padding" style="overflow-y: hidden;">
+    <form name="listaCtrl.formLista" novalidate>
+      <!-- <div class="list">
+        <label class="item item-input">
+          <input name="nomeLista" type="text" placeholder="Nome" ng-model="listaCtrl.nomeLista" required>
+        </label>
+      </div> -->
+      <div class="row">
+        <div class="col col-100">
+          <h4 style="color: grey;">Nova Lista</h4>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col-100">
+          <p style="color: grey;">Digite o nome da Lista</p>
+          <input type="text" style="border-bottom: 2px solid #d8d1d1;" ng-model="listaCtrl.nomeLista" required/>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col-100">
+          <p style="color: grey;">Digite o Tipo da Lista</p>
+          <input type="text" style="border-bottom: 2px solid #d8d1d1;" ng-model="listaCtrl.tipo" required/>
+        </div>
+      </div>
+    </form>
+  </ion-content>
+  <ion-footer-bar class="bar bar-footer bar-stable">
+      <div class="button-bar">
+        <button class="button button-stable" style="font-weight: bold; color:green;" ng-click="listaCtrl.cancelar(listaCtrl.novaMod)">Cancelar</button>
+        <button class="button button-stable" style="font-weight: bold;" ng-click="listaCtrl.criarLista()" ng-disabled="listaCtrl.formLista.$invalid">Salvar</button>
+      </div>
+    </div>
+  </ion-footer-bar>
+</div>
+</ion-modal-view>

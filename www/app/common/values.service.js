@@ -27,6 +27,7 @@ angular.module('entryPoint')
 		}
 	})
 	.value('configurationUrl', {
-		url : 'http://marketwsapp-weeb.rhcloud.com'
+		// url : 'http://marketwsapp-weeb.rhcloud.com'
+		url: 'http://localhost:8080/MD_WEB/rest'
 
 	});

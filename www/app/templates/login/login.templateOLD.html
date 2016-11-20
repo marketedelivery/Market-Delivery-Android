@@ -1,0 +1,36 @@
+<ion-view>
+<ion-content class="padding">
+<div class="list card">
+  <div class="item item-body">
+    <div style="height: 200px;">
+      <img class="login-img" ng-src="img/mkdlogo.png">
+    </div>
+        <button class="button button-block button-positive icon-left ion-social-facebook" ng-click="loginCtrl.fBLogin(newUser)" style="background: #4c66a4;">
+    <span ng-show="!loading">Conecte-se pelo Facebook</span>
+    <i ng-show="loading" class="ion-loading-b"></i>
+    </button>
+    <button class="button button-block button-positive icon-left ion-social-google" ng-click="loginCtrl.fBLogin(newUser)" style="background: #F4731C;">
+    <span ng-show="!loading">Conecte-se pelo Google</span>
+    <i ng-show="loading" class="ion-loading-b"></i>
+    </button>
+    <div class="item item-input" ng-show="loginCtrl.isShowForm">
+      <div class="list">
+        <label class="item item-input">
+          <input type="text" ng-model="loginCtrl.username" placeholder="Nome do Usuário">
+        </label>
+        <label class="item item-input">
+          <input type="password" ng-model="loginCtrl.password" placeholder="Senha">
+        </label>
+        <label class="item">
+          <button class="button button-block button-positive" type="button" ng-click="loginCtrl.login(loginCtrl.username,loginCtrl.password)">Entrar</button>
+        </label>
+        <label class="item">
+          <a href="#" ng-click="loginCtrl.openModal()">Ainda não possui cadastro? Cadastre-se!</a>
+        </label>
+      </div>
+    </div>
+    <button class="button button-full button-color-mk icon-left ion-android-cart" ng-click="loginCtrl.showForm()">Entre com a sua conta</button>
+  </div>
+</div>
+</ion-content>
+</ion-view>
