@@ -18,18 +18,17 @@
     return exports;
 
     function cadastrarUsuario(params) {
-      try{
+
         return $http.post(url + "/usuario/cadastrarUsuario", params, {
           headers: {
             "Content-Type": "application/json"
           }
         });
-      }catch(e){
-        console.log(e);
-      }
+
     }
     function login(email, senha){
-      return $http.get(url + "/usuario/efetuarLogin/" + email + ", " + senha);
+      var params = {email:email,senha:senha};
+      return $http.get(url + "/usuario/efetuarLogin", {params:params});
       // return $http.get("app/mocks/usuarios.json");
     }
 

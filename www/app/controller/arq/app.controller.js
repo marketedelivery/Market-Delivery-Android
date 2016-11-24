@@ -14,8 +14,12 @@
 			vm.logOut = logOut;
 			vm.goTo = goTo;
 			vm.activeitemClass = 0;
+			vm.cancelar = cancelar;
+			vm.showModal = showModal;
 
 			vm.loginType = {};
+			vm.noResultCarrinho = true;
+			
 
 
 			function initFb(){
@@ -93,6 +97,7 @@
 			function init(){
 
 				//var storage = window.localStorage;
+				configCarrinhoModal();
 				var usuarioRules = UtilFactory.getUsuarioStorage();
 				switch(usuarioRules.loginType){
 					case Constants.FB_LOGIN:
@@ -114,48 +119,72 @@
 			  }).then(function(modal) {
 			    $scope.modal = modal;
 			  });
-
-
-			}
-
-			function configurePopover(){
-				$ionicPopover.fromTemplateUrl('app/templates/popover.template.html', {
-			    scope: $scope
-			  }).then(function(popover) {
-			    $scope.popover = popover;
-			  });
-
-			  $scope.openPopover = function($event) {
-			    $scope.popover.show($event);
-			  };
-			  $scope.closePopover = function() {
-			    $scope.popover.hide();
-			  };
-			  //Cleanup the popover when we're done with it!
-			  $scope.$on('$destroy', function() {
-			    $scope.popover.remove();
+				$scope.$on('$destroy', function() {
+			    $scope.modal.remove();
 			  });
 
 
-			  $scope.show = function() {
-			    $ionicLoading.show({
-			      template: 'Loading...',
-			      duration: 3000
-			    }).then(function(){
-			       console.log("The loading indicator is now displayed");
-			    });
-			  };
-			  $scope.hide = function(){
-			    $ionicLoading.hide().then(function(){
-			       console.log("The loading indicator is now hidden");
-			    });
-			  };
+			}
+			function configCarrinhoModal(){
+
+				$ionicModal.fromTemplateUrl('app/templates/carrinho/carrinho.template.html', {
+			    scope: $scope,
+					animation: 'fade-in-right'
+			  }).then(function(modal) {
+			    vm.carrinhoMod = modal;
+			  });
+				$scope.$on('$destroy', function() {
+			    vm.carrinhoMod.remove();
+			  });
+
 
 			}
 
-			function showModal(){
-				$scope.modal.show();
+			function showModal(modal){
+				modal.show();
 			}
+
+			function cancelar(modal){
+				modal.hide();
+			}
+
+			// function configurePopover(){
+			// 	$ionicPopover.fromTemplateUrl('app/templates/lista/popover.template.html', {
+			//     scope: $scope
+			//   }).then(function(popover) {
+			//     $scope.popover = popover;
+			//   });
+			//
+			//   $scope.openPopover = function($event) {
+			//     $scope.popover.show($event);
+			//
+			//   };
+			//   $scope.closePopover = function() {
+			//     $scope.popover.hide();
+			//   };
+			//
+			//   //Cleanup the popover when we're done with it!
+			//   $scope.$on('$destroy', function() {
+			//     $scope.popover.remove();
+			//   });
+			//
+			//
+			//   $scope.show = function() {
+			//     $ionicLoading.show({
+			//       template: 'Loading...',
+			//       duration: 3000
+			//     }).then(function(){
+			//        console.log("The loading indicator is now displayed");
+			//     });
+			//   };
+			//   $scope.hide = function(){
+			//     $ionicLoading.hide().then(function(){
+			//        console.log("The loading indicator is now hidden");
+			//     });
+			//   };
+			//
+			// }
+
 
 			function setFbIdStorage(fbId){
 				var usuario = UtilFactory.getUsuarioStorage();

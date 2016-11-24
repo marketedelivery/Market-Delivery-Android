@@ -12,6 +12,8 @@
 
 			vm.openModal = openModal;
 			vm.listarSupermercado = listarSupermercado;
+			vm.noResultProd = true;
+			vm.listarProdutos = listarProdutos;
 
 			function openModal(){
 				$scope.modal.show();
@@ -81,24 +83,27 @@
 
 			}
 			function init(){
-				 configureModalAndLoading();
+				//  configureModalAndLoading();
 				 vm.hasSupermercadoSearched = AppValues.hasSupermercadoSearched;
 				 vm.imgSup = "img/carre.jpg";
 				 vm.supermercadoList = [{nome : 'Carrefour', url : 'img/carre.jpg'}];
-
-				 vm.testeArr = [{nome: 'teste'},{nome: 'teste'},{nome: 'teste'},{nome: 'teste'},{nome: 'teste'},{nome: 'teste'},{nome: 'teste'},{nome: 'teste'}];
-
 				 vm.lista = $stateParams.lista;
 	 			if (vm.lista) {}
-	 			ProdutoService.listarProdutos().then(
+			}
+			function listarProdutos(nome){
+				ProdutoService.listarProdutos(nome).then(
 	 				function success(response) {
-	 					if (response.data) {
+	 					if (Array.isArray(response.data) && response.data.length > 0) {
 	 						vm.produtos = response.data;
+							vm.noResultProd = false;
 	 					} else {
+							vm.noResultProd = true;
 	 						vm.produtos = [];
 	 					}
 	 				},
-	 				function error(error) {});
+	 				function error(error) {
+						vm.noResultProd = true;
+					});
 			}
 
 			init();

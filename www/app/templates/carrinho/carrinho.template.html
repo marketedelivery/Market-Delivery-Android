@@ -2,12 +2,25 @@
     width: 100%; min-height: 0 !important; height: 100%!important; top: 0%;left: 0%; right: 5%; bottom: 5%;
     background-color: transparent;
     border-radius: 0px;">
-  <ion-header-bar>
-    <button class="button button-icon icon-color button-clear ion-android-arrow-back" ng-click="carrinhoCtrl.cancelar()"> </button>
-    <h1 class="title">Carrinho</h1>
+	<ion-header-bar>
+		<button class="button button-icon icon-color button-clear ion-android-arrow-back" ng-click="appCtrl.cancelar(appCtrl.carrinhoMod)"> </button>
+		<h1 class="title">Carrinho</h1>
 	</ion-header-bar>
-  <div class="ion-modal-content-custom" style="background-color: #fafafa">
-    <ion-content class="padding" style="overflow-y: hidden;">
-    </ion-content>
-  </div>
+	<div class="ion-modal-content-custom" style="background-color: #fafafa">
+		<ion-content>
+			<div class="padding">
+				<div class="list" ng-hide="!appCtrl.noResultCarrinho">
+					<a class="item item-thumbnail-left">
+						<img ng-src="img/salada.jpg">
+						<h2 style="color: black;">Leite em Pó</h2>
+						<p>Ninho</p> <b>Quantidade: 3</b> </a>
+				</div>
+				<div class="list card  stable-bg" ng-show="!appCtrl.noResultCarrinho">
+					<div class="item item-body">
+						<h4>Nenhuma item adicionado no carrinho</h4>
+					</div>
+				</div>
+			</div>
+		</ion-content>
+	</div>
 </ion-modal-view>

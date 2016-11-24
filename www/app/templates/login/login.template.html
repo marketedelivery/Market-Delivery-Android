@@ -5,11 +5,14 @@
     <div style="height: 200px;">
       <img class="login-img" ng-src="img/mkdlogo.png">
     </div>
-        <button class="button button-block button-positive icon-left ion-social-facebook" ng-click="loginCtrl.fBLogin(newUser)" style="background: #4c66a4;">
+    <button class="button button-block button-positive icon-left ion-social-facebook" ng-click="loginCtrl.fBLogin(newUser)" style="background: #4c66a4;">
     <span ng-show="!loading">Conecte-se pelo Facebook</span>
     <i ng-show="loading" class="ion-loading-b"></i>
     </button>
-
+    <!-- <button class="button button-block button-positive" ng-click="loginCtrl.testeLoad()">
+    <span ng-show="!loading">Teste load</span>
+    <i ng-show="loading" class="ion-loading-b"></i>
+    </button> -->
     <div class="item item-input" ng-show="loginCtrl.isShowForm">
       <div class="list">
         <label class="item item-input">
@@ -26,6 +29,11 @@
     <button class="button button-full button-color-mk icon-left ion-android-cart" ng-click="loginCtrl.showForm()">Entre com a sua conta</button>
     <a class="button button-clear button-positive" ng-click="loginCtrl.openModal()">Nao possui conta? Cadastre-se.
     </a>
+    <!-- <button class="button button-full" ng-click="isUrl=!isUrl">URL</button>
+    <label class="item item-input" ng-show="isUrl">
+      <input type="text" ng-model="loginCtrl.url">
+      <button class="button button-full" ng-click="loginCtrl.changeUrl()">Change</button>
+    </label> -->
   </div>
 </div>
 </ion-content>

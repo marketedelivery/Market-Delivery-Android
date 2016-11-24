@@ -1,12 +1,11 @@
 <ion-view>
   <div class="bar bar-subheader">
-      <div class="item item-input-inset" style="border-radius: 5px;
-    width: 100%;">
-        <label style="width: 100%">
-            <input type="search" name="name" style="width: 100%;"/>
+    <div class="item item-input-inset" style="border-radius: 5px;
+    width: 100%;"> <label style="width: 100%">
+            <input type="search" name="name" style="width: 100%;" ng-model="nome"/>
         </label>
-        <button class="button button-icon icon-color button-small ion-search"></button>
-      </div>
+      <button class="button button-icon icon-color button-small ion-search" ng-click="produtoCtrl.listarProdutos(nome)"></button>
+    </div>
   </div>
   <ion-content class="has-subheader">
     <!-- <div class="row" style="flex-wrap: wrap;">
@@ -18,7 +17,7 @@
     			</div>
         </div>
     </div> -->
-    <div class="list">
+    <!-- <div class="list">
         <div class="item" collection-repeat="produto in produtoCtrl.produtos">
             <div class="list card  stable-bg" >
     			<div class="item item-body">
@@ -26,6 +25,31 @@
     			</div>
     			</div>
         </div>
+    </div> -->
+    <div class="padding">
+      <div class="row" style="flex-wrap: wrap;">
+        <div class="col col-50" ng-repeat="produto in produtoCtrl.produtos">
+          <div class="list card  stable-bg" style="min-height: 210px;">
+            <div class="item item-body" style="text-align: center;">
+              <img ng-src="img/salada.jpg" width="80px" height="80px">
+              <h2 style="color: black;" ng-bind="produto.nome"></h2>
+              <p ng-bind="produto.marca"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="list" ng-hide="produtoCtrl.noResultProd">
+        <a class="item item-thumbnail-left" collection-repeat="produto in produtoCtrl.produtos"
+    >
+          <img ng-src="img/salada.jpg">
+          <h2 style="color: black;" ng-bind="produto.nome"></h2>
+          <p ng-bind="produto.marca"></p></a>
+      </div> -->
+      <div class="list card  stable-bg" ng-show="produtoCtrl.noResultProd">
+        <div class="item item-body">
+          <h4>Nenhuma produto encontrado!</h4>
+        </div>
+      </div>
     </div>
   </ion-content>
 </ion-view>

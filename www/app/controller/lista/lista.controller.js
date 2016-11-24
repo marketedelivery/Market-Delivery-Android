@@ -131,13 +131,17 @@
 
     }
 
-    function openModal(modal) {
+    function openModal(modal, lista) {
+      vm.lista = lista;
       modal.show();
     }
 
     function cancelar(modal) {
       modal.hide();
     }
+    $scope.$on('$destroy', function() {
+      modal.remove();
+    });
 
     function init() {
       configureModal();

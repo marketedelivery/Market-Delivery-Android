@@ -1,17 +1,14 @@
-<ion-modal-view class="ion-nifty-modal" style="
-    width: 100%; min-height: 0 !important; height: 100%!important; top: 0%;left: 0%; right: 5%; bottom: 5%;
-    background-color: transparent;
-    border-radius: 0px;">
+<ion-modal-view >
     <ion-header-bar>
       <button class="button button-icon icon-color button-clear ion-android-arrow-back" ng-click="listaCtrl.cancelar(listaCtrl.detalheMod)"> </button>
     </ion-header-bar>
-<div class="ion-modal-content-custom" style="background-color: #fafafa">
+<div  style="background-color: #fafafa">
 <ion-content class="padding">
 <div class="list">
     <div class="item item-avatar item-detalhe">
       <img class="list-icon" ng-src="img/listicon.png">
-      <h3 ng-bind="listaformCtrl.lista.nome"></h3>
-      <p>{{listaformCtrl.lista.dataCriacao | date : 'dd/MM/yyyy'}}</p>
+      <h3 ng-bind="listaCtrl.lista.nome"></h3>
+      <p>{{listaCtrl.lista.dataCriacao | date : 'dd/MM/yyyy'}}</p>
     </div>
 </div>
 <div class="list">

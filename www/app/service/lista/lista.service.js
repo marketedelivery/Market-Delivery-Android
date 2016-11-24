@@ -19,7 +19,7 @@
     return exports;
 
     function criarListaCompras(params) {
-      return $http.post(url + "/listaCompras/cadastrarLista", params, {
+      return $http.post(url + "/listaCompras", params, {
         headers: {
           "Content-Type": "application/json"
         }
@@ -28,7 +28,7 @@
 
     function listaCompras(usuarioId) {
       // return $http.get(url + "/listaCompras/consultarListasComprasPorUsuario/"+ usuarioId);
-      return $http.get(url + "/listaCompras/consultarTodasListas");
+      return $http.get(url + "/listacompras");
     }
 
     function getUsuario(){

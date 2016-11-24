@@ -3,9 +3,9 @@
     .module("entryPoint")
     .controller("LoginController", loginController);
 
-  loginController.$inject = ['$scope', '$state', '$rootScope', '$openFB', 'Constants', '$http', '$ionicModal', 'UsuarioService'];
+  loginController.$inject = ['$scope', '$state', '$rootScope', '$openFB', 'Constants', '$http', '$ionicModal', 'UsuarioService', '$cordovaToast', 'UtilFactory', '$timeout', 'configurationUrl'];
 
-  function loginController($scope, $state, $rootScope, $openFB, Constants, $http, $ionicModal, UsuarioService) {
+  function loginController($scope, $state, $rootScope, $openFB, Constants, $http, $ionicModal, UsuarioService, $cordovaToast, UtilFactory, $timeout, configurationUrl) {
     var vm = this;
 
     vm.isShowForm = false;
@@ -15,46 +15,51 @@
     vm.openModal = openModal;
     vm.cancelar = cancelar;
     vm.cadastrarUsuario = cadastrarUsuario;
+    vm.testeLoad = testeLoad;
+    vm.hideLoad = hideLoad;
+    vm.changeUrl = changeUrl;
+
+    function testeLoad(){
+      UtilFactory.showLoad($rootScope);
+    }
+    function changeUrl(){
+
+      $rootScope.$broadcast("changeurl", {
+        url: vm.url
+      });
+
+    }
+    function hideLoad(){
+      UtilFactory.hideLoad();
+    }
 
     function showForm() {
       vm.isShowForm = !vm.isShowForm;
     }
 
     function login() {
-
+      UtilFactory.showLoad($rootScope);
       UsuarioService.login(vm.usuarioNm.email, vm.usuarioNm.senha).then(
         function success(response) {
           var usuario = response.data;
-          if (usuario) {
+          if (usuario && usuario.codigo === null) {
             $rootScope.$broadcast("login", {
               loginType: Constants.NM_LOGIN,
               usuario: usuario
             });
+            UtilFactory.hideLoad();
           } else {
-            console.log('Usuário não encontrado');
+            UtilFactory.hideLoad();
+            UtilFactory.showDialog($rootScope, {message:'Usuário ou Senha inválidos'});
+
           }
 
-          // if (usuarios[0]) {
-          //   var usuario = usuarios.filter(function(usu) {
-          //     return usu.Email === vm.usuarioNm.email && usu.Senha === vm.usuarioNm.senha;
-          //   })[0];
-          //   if (usuario) {
-          //     $rootScope.$broadcast("login", {
-          //         loginType: Constants.NM_LOGIN,
-          //         usuario: usuario
-          //     });
-          //   } else {
-          //     console.log('Usuário não encontrado');
-          //   }
-          // }
         },
         function error(error) {
-          console.log(error);
+
         }
       );
-      // $rootScope.$broadcast("login", {
-      // 	loginType: Constants.NM_LOGIN
-      // });
+
     }
 
     function fBLogin() {
@@ -77,8 +82,10 @@
 
     function cancelar() {
       $scope.modal.hide();
-
     }
+    $scope.$on('$destroy', function() {
+      $scope.modal.remove();
+    });
 
     function cadastrarUsuario() {
 

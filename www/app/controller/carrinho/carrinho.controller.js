@@ -9,8 +9,7 @@
 	function carrinhoController($scope, $state, $ionicHistory) {
 
 		var vm = this;
-		
-
+		vm.noResult = true;
 		function goBack() {
 			$ionicHistory.goBack();
 		}

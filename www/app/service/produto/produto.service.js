@@ -24,9 +24,10 @@
       });
     }
 
-    function listarProdutos() {
+    function listarProdutos(nome) {
       // return $http.get(url + "/produto");
-      return $http.get('app/mocks/produtos.json');
+      return $http.get(url + '/produto/pesquisarProdutoPorNome/' +nome);
+      // return $http.get('app/mocks/produtos.json');
     }
 
 

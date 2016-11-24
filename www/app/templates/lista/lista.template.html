@@ -2,7 +2,7 @@
 <ion-view>
 <ion-content class="padding" style="margin-top: 20px;">
 <div class="list" ng-show="listaCtrl.hasList">
-	<div class="item item-icon-right item-img" ng-repeat="lista in listaCtrl.listas" ng-click="listaCtrl.openModal(listaCtrl.detalheMod)">
+	<div class="item item-icon-right item-img" ng-repeat="lista in listaCtrl.listas" ng-click="listaCtrl.openModal(listaCtrl.detalheMod, lista)">
 		<i class="icon ion-chevron-right"></i>
 		<h2 ng-bind="lista.nome"></h2>
 			<p>{{ lista.dataCriacao | date: 'dd/MM/yyyy'}}</p>
