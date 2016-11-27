@@ -42,7 +42,7 @@
       UsuarioService.login(vm.usuarioNm.email, vm.usuarioNm.senha).then(
         function success(response) {
           var usuario = response.data;
-          if (usuario && usuario.codigo === null) {
+          if (usuario && usuario.codigo !== null) {
             $rootScope.$broadcast("login", {
               loginType: Constants.NM_LOGIN,
               usuario: usuario

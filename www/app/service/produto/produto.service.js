@@ -26,7 +26,10 @@
 
     function listarProdutos(nome) {
       // return $http.get(url + "/produto");
-      return $http.get(url + '/produto/pesquisarProdutoPorNome/' +nome);
+    var params = {
+      nome: nome
+    }
+      return $http.get(url + '/produto/retornarProdutoPorNome',{params:params} );
       // return $http.get('app/mocks/produtos.json');
     }
 
