@@ -38,27 +38,31 @@
     }
 
     function login() {
-      UtilFactory.showLoad($rootScope);
-      UsuarioService.login(vm.usuarioNm.email, vm.usuarioNm.senha).then(
-        function success(response) {
-          var usuario = response.data;
-          if (usuario && usuario.codigo !== null) {
-            $rootScope.$broadcast("login", {
+      $rootScope.$broadcast("login", {
               loginType: Constants.NM_LOGIN,
-              usuario: usuario
+              usuario: 'teste'
             });
-            UtilFactory.hideLoad();
-          } else {
-            UtilFactory.hideLoad();
-            UtilFactory.showDialog($rootScope, {message:'Usuário ou Senha inválidos'});
 
-          }
-
-        },
-        function error(error) {
-
-        }
-      );
+      // UsuarioService.login(vm.usuarioNm.email, vm.usuarioNm.senha).then(
+      //   function success(response) {
+      //     var usuario = response.data;
+      //     if (usuario && usuario.codigo !== null) {
+      //       $rootScope.$broadcast("login", {
+      //         loginType: Constants.NM_LOGIN,
+      //         usuario: usuario
+      //       });
+      //       UtilFactory.hideLoad();
+      //     } else {
+      //       UtilFactory.hideLoad();
+      //       UtilFactory.showDialog($rootScope, {message:'Usuário ou Senha inválidos'});
+      //
+      //     }
+      //
+      //   },
+      //   function error(error) {
+      //
+      //   }
+      // );
 
     }
 

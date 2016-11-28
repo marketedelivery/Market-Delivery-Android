@@ -9,16 +9,17 @@
 	<div class="ion-modal-content-custom" style="background-color: #fafafa">
 		<ion-content>
 			<div class="padding">
-				<div class="list" ng-hide="!appCtrl.noResultCarrinho">
+				<div class="list" ng-hide="appCtrl.noResultCarrinho">
 					<a class="item item-thumbnail-left">
 						<img ng-src="img/salada.jpg">
 						<h2 style="color: black;">Leite em Pó</h2>
 						<p>Ninho</p> <b>Quantidade: 3</b> </a>
 				</div>
-				<div class="list card  stable-bg" ng-show="!appCtrl.noResultCarrinho">
+				<div class="list card  stable-bg" ng-show="appCtrl.noResultCarrinho">
 					<div class="item item-body">
-						<h4>Nenhuma item adicionado no carrinho</h4>
-					</div>
+				        <i class="icon ion-android-cart" style="font-size:120px; margin-right: auto; margin-left: auto; display: block; text-align: center; color: green"></i>
+				        <h2 style="text-align: center;">Nenhum item adicionado ao carrinho!</h2>
+				    </div>
 				</div>
 			</div>
 		</ion-content>

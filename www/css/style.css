@@ -183,3 +183,7 @@
   border-right: none;
   border-top: none;
 }
+.loading-container .loading {
+    background-color: transparent !important;
+    color: #020202 !important;
+}

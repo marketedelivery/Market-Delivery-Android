@@ -1,7 +1,7 @@
 (function() {
 	angular
 		.module('entryPoint')
-		.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider, $httpProvider) {
+		.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider, $httpProvider, loadServiceProvider) {
 
 			$stateProvider
 
@@ -29,9 +29,11 @@
 					'menuContent': {
 						templateUrl: 'app/templates/produto/produto.template.html',
 						controller: 'ProdutoController',
-						controllerAs: 'produtoCtrl'
+						controllerAs: 'produtoCtrl',
+						
 					}
 				},
+				cache: false,
 				params: {
 					loginType: null
 				}
@@ -82,7 +84,8 @@
 						controller: 'ListaController',
 						controllerAs: 'listaCtrl'
 					}
-				}
+				},
+				cache: false
 
 			})
 
@@ -132,6 +135,23 @@
 			$httpProvider.defaults.headers.post = {};
 			$httpProvider.defaults.headers.put = {};
 			$httpProvider.defaults.headers.patch = {};
+			$httpProvider.interceptors.push(interceptor);
+
+			function interceptor(){
+				return {
+					request: function(config){
+						if(config.url.indexOf('localhost:8080')!==-1){
+							loadServiceProvider.show();
+
+						}
+						return config;
+					},
+					response: function(response){
+						// loadServiceProvider.hide();
+						return response;
+					}
+				};
+			}
 		});
 
 

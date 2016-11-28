@@ -1,10 +1,11 @@
 
 <ion-view>
 <ion-content class="padding" style="margin-top: 20px;">
-<div class="list" ng-show="listaCtrl.hasList">
+<div class="list" ng-hide="listaCtrl.noLista">
 	<div class="item item-icon-right item-img" ng-repeat="lista in listaCtrl.listas" ng-click="listaCtrl.openModal(listaCtrl.detalheMod, lista)">
 		<i class="icon ion-chevron-right"></i>
 		<h2 ng-bind="lista.nome"></h2>
+		<h2 ng-bind="lista.tipo"></h2>
 			<p>{{ lista.dataCriacao | date: 'dd/MM/yyyy'}}</p>
 	</div>
 </div>
@@ -31,13 +32,19 @@
 </div>
 -->
 	<!--https://lipis.github.io/bootstrap-social/ -->
-	<div class="list card" ng-show="listaCtrl.showempty">
+<!-- 	<div class="list card" ng-show="listaCtrl.noLista">
 	  <div class="item item-body">
 	    <div style="height: 200px;">
 	      <img class="login-img" ng-src="img/mkdlogo.png">
 	    </div>
 		</div>
-	</div>
+	</div> -->
+	<div class="list card  stable-bg" ng-show="listaCtrl.noLista">
+      <div class="item item-body">
+        <i class="icon ion-android-list" style="font-size:120px; margin-right: auto; margin-left: auto; display: block; text-align: center; color: green"></i>
+        <h2 style="text-align: center;">Você não possui lista!</h2>
+      </div>
+    </div>
 </ion-content>
 <div class="bar bar-footer">
 	<div class="buttons buttons-right">

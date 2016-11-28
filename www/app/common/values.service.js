@@ -18,7 +18,8 @@ angular.module('entryPoint')
 		{
 			nomeMercado : 'Pão de Açucar'
 
-		}]
+		}],
+		listasCompras : []
 	})
 	.value('AppValues', {
 		hasSupermercadoSearched : false,
@@ -29,6 +30,6 @@ angular.module('entryPoint')
 	.value('configurationUrl', {
 		// url : 'http://marketwsapp-weeb.rhcloud.com'
 
-		url: 'http://localhost:8080/MD_WEB/rest'
+		url: 'http://10.1.11.12:8080/MD_WEB/rest'
 
 	});

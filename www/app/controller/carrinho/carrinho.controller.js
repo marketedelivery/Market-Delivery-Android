@@ -4,15 +4,15 @@
 		.module('entryPoint')
 		.controller('CarrinhoController', carrinhoController);
 
-	carrinhoController.$inject = ['$scope', '$state', '$ionicHistory'];
+	carrinhoController.$inject = ['$scope', '$state'];
 
-	function carrinhoController($scope, $state, $ionicHistory) {
+	function carrinhoController($scope, $state) {
 
 		var vm = this;
 		vm.noResult = true;
-		function goBack() {
-			$ionicHistory.goBack();
-		}
+
+		
+		
 
 
 

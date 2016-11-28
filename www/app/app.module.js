@@ -3,9 +3,11 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('entryPoint', ['ionic', 'ngOpenFB', 'ui.mask', 'ngCordova'])
+angular.module('appModule', ['ionic', 'ngOpenFB', 'ui.mask', 'ngCordova'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $ionicLoading, loadService, $timeout) {
+  // console.log(loadServiceProvider);
+  loadService.setComponent($ionicLoading, $timeout);
   $ionicPlatform.ready(function() {
     if(window.cordova && window.cordova.plugins.Keyboard) {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard

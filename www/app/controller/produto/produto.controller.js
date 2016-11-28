@@ -14,6 +14,9 @@
 			vm.listarSupermercado = listarSupermercado;
 			vm.noResultProd = true;
 			vm.listarProdutos = listarProdutos;
+			vm.atualizaPagina = atualizaPagina;
+			vm.mudarQuantidade = mudarQuantidade;
+
 
 			function openModal(){
 				$scope.modal.show();
@@ -84,6 +87,8 @@
 			}
 			function init(){
 				//  configureModalAndLoading();
+				vm.produtos = [];
+				vm.listas = Listas.listasCompras;
 				 vm.hasSupermercadoSearched = AppValues.hasSupermercadoSearched;
 				 vm.imgSup = "img/carre.jpg";
 				 vm.supermercadoList = [{nome : 'Carrefour', url : 'img/carre.jpg'}];
@@ -94,7 +99,11 @@
 				ProdutoService.listarProdutos(nome).then(
 	 				function success(response) {
 	 					if (Array.isArray(response.data) && response.data.length > 0) {
+							convertProdutos(response.data);
+							pageConfig(response.data.length);
+
 	 						vm.produtos = response.data;
+
 							vm.noResultProd = false;
 	 					} else {
 							vm.noResultProd = true;
@@ -104,6 +113,37 @@
 	 				function error(error) {
 						vm.noResultProd = true;
 					});
+			}
+			function pageConfig(totalRegistros){
+				vm.totalRegistros = totalRegistros;
+				vm.quantidadeRegPagina = totalRegistros < 10 ? totalRegistros : 10;
+				var totalRegDiv = totalRegistros / 10;
+				var truncReg = Math.trunc(totalRegDiv);
+				vm.totalDezenas = truncReg === 0 ? 1 : truncReg;
+				vm.paginaAtual = 1;
+			}
+			function atualizaPagina(){
+				if(vm.paginaAtual === vm.totalDezenas){
+					vm.quantidadeRegPagina = vm.totalRegistros - vm.totalDezenas * 10;
+				}
+				vm.paginaAtual++;
+			}
+			function convertProdutos(produtos){
+
+				angular.forEach(produtos, function(produto){
+					if(angular.isString(produto.image)){
+						produto.image = produto.image.replace('C:\\ImagemMarketeDelivery\\imagens produtos', "img");
+					}
+					produto.quantidade = 0;
+				});
+
+			}
+			function mudarQuantidade(produto, quantidade){
+				produto.quantidade += quantidade; 
+				if(produto.quantidade === -1){
+					produto.quantidade = 0;
+				}
+
 			}
 
 			init();
