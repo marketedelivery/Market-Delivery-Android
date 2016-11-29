@@ -29,8 +29,8 @@
     var params = {
       nome: nome
     };
-      // return $http.get(url + '/produto/retornarProdutoPorNome',{params:params} );
-      return $http.get('app/mocks/produtos2.json');
+      return $http.get(url + '/produto/retornarProdutoPorNome',{params:params} );
+      // return $http.get('app/mocks/produtos2.json');
     }
 
 

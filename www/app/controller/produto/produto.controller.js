@@ -131,15 +131,15 @@
 			function convertProdutos(produtos){
 
 				angular.forEach(produtos, function(produto){
-					if(angular.isString(produto.image)){
-						produto.image = produto.image.replace('C:\\ImagemMarketeDelivery\\imagens produtos', "img");
+					if(angular.isString(produto.imagem)){
+						produto.imagem = produto.imagem.replace('C:\\ImagemMarketeDelivery\\imagens produtos', "img");
 					}
 					produto.quantidade = 0;
 				});
 
 			}
 			function mudarQuantidade(produto, quantidade){
-				produto.quantidade += quantidade; 
+				produto.quantidade += quantidade;
 				if(produto.quantidade === -1){
 					produto.quantidade = 0;
 				}

@@ -49,67 +49,68 @@
 
 
     function listaCompras() {
-      vm.listas = Listas.listasCompras;
-      vm.noLista = false;
+      //vm.listas = Listas.listasCompras;
+      //vm.noLista = false;
       // var storage = UtilFactory.getUsuarioStorage();
       // var usuarioId = (storage.usuario && storage.usuario.codigo) ? storage.usuario.codigo : 0;
-      // ListaComprasService.listaCompras(storage.usuario).then(
-      //   function success(response) {
-      //     if (response.data) {
-      //       if (angular.isArray(response.data) && response.data.length > 0) {
-      //         vm.hasList = true;
-      //         vm.showempty = false;
-      //         vm.listas = response.data;
+      var usuarioId = 1;
+      ListaComprasService.listaCompras(usuarioId).then(
+        function success(response) {
+          if (response.data) {
+            if (angular.isArray(response.data) && response.data.length > 0) {
+              vm.noLista = false;
 
-      //       } else {
-      //         vm.hasList = false;
-      //         vm.showempty = true;
-      //         vm.emptyLista = "Nenhuma Lista Encontrada";
-      //         vm.listas = [];
-      //       }
-      //     }
+              vm.listas = response.data;
 
-      //   },
-      //   function error(error) {
-      //     vm.hasList = false;
-      //     vm.emptyLista = "Nenhuma Lista Encontrada";
+            } else {
+              vm.noLista = true;
 
-      //   });
+              vm.emptyLista = "Nenhuma Lista Encontrada";
+              vm.listas = [];
+            }
+          }
+
+        },
+        function error(error) {
+          vm.hasList = false;
+          vm.emptyLista = "Nenhuma Lista Encontrada";
+
+        });
     }
 
     function criarLista() {
 
       if (vm.lista.nome && vm.lista.tipo) {
-        vm.lista.dataCriacao = $filter('date')(new Date(), 'dd/MM/yyyy');
-        vm.listas.push(vm.lista);
-        Listas.listasCompras = vm.listas;
-        vm.noLista = false;
-        closeModal(vm.novaMod);
-        // vm.isEditMode = true;
+        // vm.lista.dataCriacao = $filter('date')(new Date(), 'dd/MM/yyyy');
+        // vm.listas.push(vm.lista);
+        // Listas.listasCompras = vm.listas;
+        // vm.noLista = false;
+        // closeModal(vm.novaMod);
+        vm.isEditMode = true;
         // UtilFactory.showLoad();
         // var storage = UtilFactory.getUsuarioStorage();
         // if (storage.usuario && storage.usuario.codigo) {
-          // var params = {
-          //   nome: vm.nomeLista,
-          //   tipo: vm.tipo,
-          //   dataCriacao: $filter('date')(new Date(), 'yyyy-mm-dd'),
-          //   qtd: 0,
-          //   usuario: {
-          //     codigo: storage.usuario.codigo
-          //   }
-          // };
-          // ListaComprasService.criarListaCompras(params).then(
-          //   function success(response) {
-          //     if (response.data) {
-          //       vm.listas.push(response.data);
-          //       vm.nomeLista = "";
-          //       cancelar();
-          //     }
-          //     UtilFactory.hideLoad();
-          //   },
-          //   function error(response) {
-          //     UtilFactory.hideLoad();
-          //   });
+          var params = {
+            nome: vm.lista.nome,
+            tipo: vm.lista.tipo,
+            dataCriacao: $filter('date')(new Date(), 'yyyy-mm-dd'),
+            qtd: 0
+            // usuario: {
+            //   codigo: storage.usuario.codigo
+            // }
+          };
+          ListaComprasService.criarListaCompras(params).then(
+            function success(response) {
+              if (response.data) {
+                vm.listas.push(response.data);
+                vm.nomeLista = "";
+                //cancelar();
+              }
+              //UtilFactory.hideLoad();
+            },
+            function error(response) {
+              //UtilFactory.hideLoad();
+            });
         //   var params = {
         //     nome: vm.nomeLista,
         //     tipo: vm.tipo,

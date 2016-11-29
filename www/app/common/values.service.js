@@ -30,6 +30,6 @@ angular.module('entryPoint')
 	.value('configurationUrl', {
 		// url : 'http://marketwsapp-weeb.rhcloud.com'
 
-		url: 'http://10.1.11.12:8080/MD_WEB/rest'
+		url: 'http://localhost:8080/MD_WEB/rest'
 
 	});

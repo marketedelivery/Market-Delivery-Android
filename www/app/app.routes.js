@@ -30,7 +30,7 @@
 						templateUrl: 'app/templates/produto/produto.template.html',
 						controller: 'ProdutoController',
 						controllerAs: 'produtoCtrl',
-						
+
 					}
 				},
 				cache: false,
@@ -141,7 +141,7 @@
 				return {
 					request: function(config){
 						if(config.url.indexOf('localhost:8080')!==-1){
-							loadServiceProvider.show();
+							//loadServiceProvider.show();
 
 						}
 						return config;
