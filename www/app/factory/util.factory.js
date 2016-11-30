@@ -38,11 +38,16 @@
       });
     }
 
-    function hideLoad() {
+    function hideLoad(callback, obj) {
       $timeout.cancel(timeState);
-      $ionicLoading.hide().then(function() {
-        console.log("The loading indicator is now hidden");
-      });
+      $timeout(function(){
+        $ionicLoading.hide().then(function() {
+          console.log("The loading indicator is now hidden");
+          if(callback){
+            callback(obj);
+          }
+        });
+      }, 2000);
     }
     // function timeoutControl(){
     //   showDialog('Problemas com a sua Conexão. Tente novamente mais tarde');

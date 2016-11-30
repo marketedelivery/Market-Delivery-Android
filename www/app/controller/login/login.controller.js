@@ -38,32 +38,34 @@
     }
 
     function login() {
+      UtilFactory.showLoad($rootScope);
+      UsuarioService.login(vm.usuarioNm.email, vm.usuarioNm.senha).then(
+        function success(response) {
+          var usuario = response.data;
+          if (usuario && usuario.codigo) {
+
+            UtilFactory.hideLoad(gologin, usuario);
+          } else {
+            UtilFactory.hideLoad(showResult);
+            // UtilFactory.showDialog($rootScope, {message:'Usuário ou Senha inválidos'});
+
+          }
+
+        },
+        function error(error) {
+
+        }
+      );
+
+    }
+    function gologin(usuario){
       $rootScope.$broadcast("login", {
-              loginType: Constants.NM_LOGIN,
-              usuario: 'teste'
-            });
-
-      // UsuarioService.login(vm.usuarioNm.email, vm.usuarioNm.senha).then(
-      //   function success(response) {
-      //     var usuario = response.data;
-      //     if (usuario && usuario.codigo !== null) {
-      //       $rootScope.$broadcast("login", {
-      //         loginType: Constants.NM_LOGIN,
-      //         usuario: usuario
-      //       });
-      //       UtilFactory.hideLoad();
-      //     } else {
-      //       UtilFactory.hideLoad();
-      //       UtilFactory.showDialog($rootScope, {message:'Usuário ou Senha inválidos'});
-      //
-      //     }
-      //
-      //   },
-      //   function error(error) {
-      //
-      //   }
-      // );
-
+        loginType: Constants.NM_LOGIN,
+        usuario: usuario
+      });
+    }
+    function showResult(){
+      UtilFactory.showDialog($rootScope, {message:'Usuário ou Senha inválidos'});
     }
 
     function fBLogin() {

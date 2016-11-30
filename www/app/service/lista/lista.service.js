@@ -36,6 +36,11 @@
       return $http.get(url + "/usuario/pesquisarUsuarioPorId/27");
     }
 
+    function buscarItemPorLista(listaId){
+      var params = {codigo: listaId};
+      return $http.get(url + "/item/consultarItensPorLista",{params: params});
+    }
+
 
 
   }

@@ -13,7 +13,7 @@ func main() {
 
 	port := os.Getenv("OPENSHIFT_GO_PORT")
 	if port == "" {
-		port = "8080"
+		port = "8100"
 	}
 	ip := os.Getenv("OPENSHIFT_GO_IP")
 	if ip == "" {

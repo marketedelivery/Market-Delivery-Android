@@ -4,11 +4,12 @@
     .module('entryPoint')
     .controller('ListaController', listaController);
 
-  listaController.$inject = ['$scope', '$state', '$stateParams', 'ListaComprasService', '$ionicModal', 'UtilFactory', '$ionicBackdrop', '$filter', 'Listas'];
+  listaController.$inject = ['$scope', '$rootScope','$state', '$stateParams', 'ListaComprasService', '$ionicModal', 'UtilFactory', '$ionicBackdrop', '$filter', 'Listas'];
 
-  function listaController($scope, $state, $stateParams, ListaComprasService, $ionicModal, UtilFactory, $ionicBackdrop, $filter, Listas) {
+  function listaController($scope, $rootScope, $state, $stateParams, ListaComprasService, $ionicModal, UtilFactory, $ionicBackdrop, $filter, Listas) {
 
     var vm = this;
+
 
     vm.listaCompras = listaCompras;
     vm.noLista = true;
@@ -51,9 +52,8 @@
     function listaCompras() {
       //vm.listas = Listas.listasCompras;
       //vm.noLista = false;
-      // var storage = UtilFactory.getUsuarioStorage();
-      // var usuarioId = (storage.usuario && storage.usuario.codigo) ? storage.usuario.codigo : 0;
-      var usuarioId = 1;
+      var storage = UtilFactory.getUsuarioStorage();
+      var usuarioId = (storage.usuario && storage.usuario.codigo) ? storage.usuario.codigo : 0;
       ListaComprasService.listaCompras(usuarioId).then(
         function success(response) {
           if (response.data) {
@@ -61,10 +61,11 @@
               vm.noLista = false;
 
               vm.listas = response.data;
+              Listas.listasCompras = response.data;
 
             } else {
               vm.noLista = true;
-
+              Listas.listasCompras = [];
               vm.emptyLista = "Nenhuma Lista Encontrada";
               vm.listas = [];
             }
@@ -81,54 +82,41 @@
     function criarLista() {
 
       if (vm.lista.nome && vm.lista.tipo) {
-        // vm.lista.dataCriacao = $filter('date')(new Date(), 'dd/MM/yyyy');
-        // vm.listas.push(vm.lista);
-        // Listas.listasCompras = vm.listas;
-        // vm.noLista = false;
-        // closeModal(vm.novaMod);
+
         vm.isEditMode = true;
-        // UtilFactory.showLoad();
-        // var storage = UtilFactory.getUsuarioStorage();
-        // if (storage.usuario && storage.usuario.codigo) {
+        UtilFactory.showLoad($rootScope);
+        var storage = UtilFactory.getUsuarioStorage();
+
+        if (storage.usuario && storage.usuario.codigo) {
+
           var params = {
             nome: vm.lista.nome,
             tipo: vm.lista.tipo,
-            dataCriacao: $filter('date')(new Date(), 'yyyy-mm-dd'),
-            qtd: 0
-            // usuario: {
-            //   codigo: storage.usuario.codigo
-            // }
+            dataCriacao: $filter('date')(new Date(), 'dd-MM-yyyy'),
+            qtd: 0,
+            usuario: {
+              codigo: storage.usuario.codigo
+            }
           };
+          UtilFactory.showLoad($rootScope);
           ListaComprasService.criarListaCompras(params).then(
             function success(response) {
-              if (response.data) {
-                vm.listas.push(response.data);
-                vm.nomeLista = "";
-                //cancelar();
-              }
-              //UtilFactory.hideLoad();
+              UtilFactory.hideLoad(successResponse, response);
             },
             function error(response) {
-              //UtilFactory.hideLoad();
+              UtilFactory.hideLoad();
             });
-        //   var params = {
-        //     nome: vm.nomeLista,
-        //     tipo: vm.tipo,
-        //     dataCriacao: $filter('date')(new Date(), 'yyyy-mm-dd'),
-        //     qtd: 0,
-        //     usuario: {
-        //       codigo: storage.usuario.codigo
-        //     }
-        //   };
-        //   UtilFactory.hideLoad();
-        //   cancelar(vm.novaMod);
-        //   vm.listas.push(params);
+        }
 
-        // }
+
 
       }
     }
-
+    function successResponse(response){
+      vm.listas.push(response.data);
+      vm.nomeLista = "";
+      closeModal(vm.novaMod);
+    }
 
     function goTo(lista) {
       $state.go('app.tab.detalhe', {

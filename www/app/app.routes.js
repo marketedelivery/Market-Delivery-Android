@@ -69,8 +69,8 @@
 				views: {
 					'menuContent': {
 						templateUrl: 'app/templates/lista/lista.tab.template.html',
-						controller: 'ListaController',
-						controllerAs: 'listaCtrl'
+						controller: 'ListaTabController',
+						controllerAs: 'listaTabCtrl'
 					}
 				}
 

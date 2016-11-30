@@ -11,18 +11,12 @@
     var url = configurationUrl.url;
 
     var exports = {
-      listarProdutos: listarProdutos
+      listarProdutos: listarProdutos,
+      criarItem: criarItem
     };
 
     return exports;
 
-    function criarListaCompras(params) {
-      return $http.post(url + "/criarlistacompras", params, {
-        headres: {
-          "Content-Type": "application/json"
-        }
-      });
-    }
 
     function listarProdutos(nome) {
       // return $http.get(url + "/produto");
@@ -31,6 +25,13 @@
     };
       return $http.get(url + '/produto/retornarProdutoPorNome',{params:params} );
       // return $http.get('app/mocks/produtos2.json');
+    }
+    function criarItem(params){
+      return $http.post(url + "/item/cadastrarItem", params, {
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
     }
 
 

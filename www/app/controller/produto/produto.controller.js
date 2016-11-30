@@ -4,9 +4,9 @@
 		.module('entryPoint')
 		.controller('ProdutoController', produtoController);
 
-		produtoController.$inject = ['$scope', '$state', '$stateParams', '$ionicPopover', '$ionicModal', '$ionicLoading', 'Listas','AppValues', 'SupermercadoService', 'ProdutoService'];
+		produtoController.$inject = ['$scope', '$rootScope','$state', '$stateParams', '$ionicPopover', '$ionicModal', '$ionicLoading', 'Listas','AppValues', 'SupermercadoService', 'ProdutoService', 'UtilFactory', 'ListaComprasService'];
 
-		function produtoController($scope, $state, $stateParams, $ionicPopover,  $ionicModal, $ionicLoading, Listas, AppValues, SupermercadoService, ProdutoService){
+		function produtoController($scope, $rootScope, $state, $stateParams, $ionicPopover,  $ionicModal, $ionicLoading, Listas, AppValues, SupermercadoService, ProdutoService, UtilFactory, ListaComprasService){
 
 			var vm = this;
 
@@ -16,6 +16,7 @@
 			vm.listarProdutos = listarProdutos;
 			vm.atualizaPagina = atualizaPagina;
 			vm.mudarQuantidade = mudarQuantidade;
+			vm.criarItem = criarItem;
 
 
 			function openModal(){
@@ -70,49 +71,37 @@
 			    $scope.modal = modal;
 
 			  });
-				$scope.show = function() {
-			    $ionicLoading.show({
-			      template: 'Carregando...',
-			      duration: 30000
-			    }).then(function(){
-			       console.log("The loading indicator is now displayed");
-			    });
-			  };
-			  $scope.hide = function(){
-			    $ionicLoading.hide().then(function(){
-			       console.log("The loading indicator is now hidden");
-			    });
-			  };
 
 			}
 			function init(){
-				//  configureModalAndLoading();
 				vm.produtos = [];
-				vm.listas = Listas.listasCompras;
-				 vm.hasSupermercadoSearched = AppValues.hasSupermercadoSearched;
-				 vm.imgSup = "img/carre.jpg";
-				 vm.supermercadoList = [{nome : 'Carrefour', url : 'img/carre.jpg'}];
-				 vm.lista = $stateParams.lista;
-	 			if (vm.lista) {}
+				listaCompras();
+
 			}
 			function listarProdutos(nome){
+				UtilFactory.showLoad($rootScope);
 				ProdutoService.listarProdutos(nome).then(
 	 				function success(response) {
-	 					if (Array.isArray(response.data) && response.data.length > 0) {
-							convertProdutos(response.data);
-							pageConfig(response.data.length);
-
-	 						vm.produtos = response.data;
-
-							vm.noResultProd = false;
-	 					} else {
-							vm.noResultProd = true;
-	 						vm.produtos = [];
-	 					}
+						UtilFactory.hideLoad(successResponse, response);
 	 				},
 	 				function error(error) {
 						vm.noResultProd = true;
+						UtilFactory.hideLoad();
 					});
+			}
+
+			function successResponse(response){
+				if (Array.isArray(response.data) && response.data.length > 0) {
+					convertProdutos(response.data);
+					pageConfig(response.data.length);
+
+					vm.produtos = response.data;
+
+					vm.noResultProd = false;
+				} else {
+					vm.noResultProd = true;
+					vm.produtos = [];
+				}
 			}
 			function pageConfig(totalRegistros){
 				vm.totalRegistros = totalRegistros;
@@ -148,8 +137,53 @@
 
 			init();
 
+			function listaCompras() {
+	      var storage = UtilFactory.getUsuarioStorage();
+	      var usuarioId = (storage.usuario && storage.usuario.codigo) ? storage.usuario.codigo : 0;
+	      ListaComprasService.listaCompras(usuarioId).then(
+	        function success(response) {
+	          if (response.data) {
+	            if (angular.isArray(response.data) && response.data.length > 0) {
+	              vm.listas = response.data;
+	            } else {
+	              vm.listas = [];
+	            }
+	          }
 
+	        },
+	        function error(error) {
+
+	        });
 
 		}
+		function criarItem(produto){
+			var userStorage = UtilFactory.getUsuarioStorage();
+			var usuario = userStorage.usuario;
+			if(usuario && usuario.codigo && produto){
+				var item = {
+					"lista": {
+						"codigo": vm.listaSelecionada,
+						"usuario": {
+							"codigo": usuario.codigo
+						}
+					},
+					"precoTotal": 0,
+					"produto": {
+						"codigo": produto.codigo
+					},
+					"qtdProduto": produto.quantidade
+				};
+				ProdutoService.criarItem(item).then(
+					function success(response){
+						console.log('success');
+					},
+					function error(error){
+						console.log('error');
+					}
+				);
+			}
+
+		}
+	}
 
 })();
