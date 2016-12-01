@@ -127,6 +127,7 @@
 
     function openModal(modal, lista) {
       vm.lista = lista;
+      listarProdutos(lista.codigo);
       modal.show();
     }
 
@@ -141,6 +142,9 @@
       configDetalheModal();
       listaCompras();
 
+    }
+    function listarProdutos(codigoLista){
+      ProdutoService.
     }
 
     init();
