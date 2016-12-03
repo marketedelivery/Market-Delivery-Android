@@ -198,9 +198,6 @@
 
 
     }
-    function listarProdutos(codigoLista){
-      ProdutoService.
-    }
 
     init();
 
