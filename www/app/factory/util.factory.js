@@ -28,13 +28,13 @@
     function showLoad(rootScope) {
       $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner>',
-        duration: 5000
+        duration: 30000
       }).then(function() {
         console.log('loading...');
         $timeout.cancel(timeState);
         timeState = $timeout(function(){
-          rootScope.$broadcast('eventResponse', {message: 'Problemas com a sua Conexão. Tente novamente mais tarde'});
-        }, 5000);
+           rootScope.$broadcast('eventResponse', {message: 'Problemas com a sua Conexão. Tente novamente mais tarde'});
+        }, 30000);
       });
     }
 
@@ -47,7 +47,7 @@
             callback(obj);
           }
         });
-      }, 2000);
+      }, 3000);
     }
     // function timeoutControl(){
     //   showDialog('Problemas com a sua Conexão. Tente novamente mais tarde');

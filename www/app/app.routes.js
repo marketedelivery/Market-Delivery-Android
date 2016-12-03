@@ -7,7 +7,7 @@
 
 				.state('login', {
 				url: '/login',
-				templateUrl: 'app/templates/login/login.template.html',
+				templateUrl: 'app/templates/login/login.html',
 				controller: 'LoginController',
 				controllerAs: 'loginCtrl'
 
@@ -16,7 +16,7 @@
 			.state('app', {
 				url: '/app',
 				abstract: true,
-				templateUrl: 'app/templates/menu/menu.template.html',
+				templateUrl: 'app/templates/menu/menu.html',
 				controller: 'AppController',
 				controllerAs: 'appCtrl',
 				cache: false
@@ -27,7 +27,7 @@
 				url: '/produto',
 				views: {
 					'menuContent': {
-						templateUrl: 'app/templates/produto/produto.template.html',
+						templateUrl: 'app/templates/produto/produto.html',
 						controller: 'ProdutoController',
 						controllerAs: 'produtoCtrl',
 
@@ -41,12 +41,12 @@
 			})
 
 			.state('app.conta', {
-				url: '/conta',
+				url: '/supermercado',
 				views: {
 					'menuContent': {
-						templateUrl: 'app/templates/conta/conta.template.html',
-						controller: 'ContaController',
-						controllerAs: 'contaCtrl'
+						templateUrl: 'app/templates/supermercado/supermercado.html',
+						controller: 'SupermercadoController',
+						controllerAs: 'supermercadoCtrl'
 					}
 				}
 
@@ -56,7 +56,7 @@
 				url: '/carrinho',
 				views: {
 					'menuContent': {
-						templateUrl: 'app/templates/carrinho/carrinho.template.html',
+						templateUrl: 'app/templates/carrinho/carrinho.html',
 						controller: 'CarrinhoController',
 						controllerAs: 'carrinhoCtrl'
 					}
@@ -68,7 +68,7 @@
 				url: '/listas',
 				views: {
 					'menuContent': {
-						templateUrl: 'app/templates/lista/lista.tab.template.html',
+						templateUrl: 'app/templates/lista/lista.tab.html',
 						controller: 'ListaTabController',
 						controllerAs: 'listaTabCtrl'
 					}
@@ -80,7 +80,7 @@
 				url: '/lista',
 				views: {
 					'minhalista-tab': {
-						templateUrl: 'app/templates/lista/lista.template.html',
+						templateUrl: 'app/templates/lista/lista.html',
 						controller: 'ListaController',
 						controllerAs: 'listaCtrl'
 					}
@@ -93,43 +93,14 @@
 				url: '/favorito',
 				views: {
 					'favorito-tab': {
-						templateUrl: 'app/templates/lista/lista.template.html',
+						templateUrl: 'app/templates/lista/lista.html',
 						controller: 'ListaController',
 						controllerAs: 'listaCtrl'
 					}
 				}
 
-			})
-
-			.state('app.teste', {
-				url: '/teste',
-				views: {
-					'menuContent': {
-						templateUrl: 'app/templates/produto/produto.template.html',
-						controller: 'ProdutoController',
-						controllerAs: 'produtoCtrl'
-					}
-				}
 			});
 
-
-			// .state('app.tab.detalhe', {
-			// 	url: '/detalhe',
-			// 	views: {
-			// 		'minhalista-tab': {
-			// 			templateUrl: 'app/templates/lista/lista.detalhe.template.html',
-			// 			controller: 'ListaFormController',
-			// 			controllerAs: 'listaformCtrl'
-			//
-			// 		}
-			// 	},
-			// 	params: {
-			// 		isEditMode: null,
-			// 		lista: null
-			// 	},
-			// 	cache: false
-			//
-			// });
 			$urlRouterProvider.otherwise('login');
 			$httpProvider.defaults.headers.common = {};
 			$httpProvider.defaults.headers.post = {};
@@ -140,14 +111,14 @@
 			function interceptor(){
 				return {
 					request: function(config){
-						if(config.url.indexOf('localhost:8080')!==-1){
+						if(config.url.indexOf('rest')!==-1){
 							//loadServiceProvider.show();
 
 						}
 						return config;
 					},
 					response: function(response){
-						// loadServiceProvider.hide();
+						
 						return response;
 					}
 				};

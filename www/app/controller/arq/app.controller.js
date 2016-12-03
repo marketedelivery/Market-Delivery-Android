@@ -4,9 +4,9 @@
         .module('entryPoint')
         .controller('AppController', appController);
 
-    appController.$inject = ['$scope', '$state', 'Constants', '$ionicPopover', '$ionicLoading', '$ionicModal', '$rootScope', '$openFB', 'UtilFactory', 'UsuarioService', 'PaypalService'];
+    appController.$inject = ['$scope', '$state', 'Constants', '$ionicPopover', '$ionicLoading', '$ionicModal', '$rootScope', '$openFB', 'UtilFactory', 'UsuarioService', 'PaypalService', 'Listas'];
 
-    function appController($scope, $state, Constants, $ionicPopover, $ionicLoading, $ionicModal, $rootScope, $openFB, UtilFactory, UsuarioService, PaypalService) {
+    function appController($scope, $state, Constants, $ionicPopover, $ionicLoading, $ionicModal, $rootScope, $openFB, UtilFactory, UsuarioService, PaypalService, Listas) {
 
         var vm = this;
 
@@ -54,7 +54,13 @@
                             path: '/me'
                         })
                         .then(function(user) {
-                                vm.user = user;
+                                vm.user = {};
+                                vm.user.nome = user.name;
+                                vm.user.codigoFacebook = user.id;
+                                UtilFactory.setUsuarioStorage({
+                                    loginType: Constants.NM_LOGIN,
+                                    usuario: user
+                                });
                             },
                             function(err) {
                                 alert('Facebook error: ' + err);
@@ -101,6 +107,7 @@
 
             //var storage = window.localStorage;
             configCarrinhoModal();
+            configAddCarrinho();
             var usuarioRules = UtilFactory.getUsuarioStorage();
             switch (usuarioRules.loginType) {
                 case Constants.FB_LOGIN:
@@ -131,7 +138,7 @@
 
         function configCarrinhoModal() {
 
-            $ionicModal.fromTemplateUrl('app/templates/carrinho/carrinho.template.html', {
+            $ionicModal.fromTemplateUrl('app/templates/carrinho/carrinho.html', {
                 scope: $scope,
                 animation: 'fade-in-right'
             }).then(function(modal) {
@@ -199,16 +206,25 @@
         function criarPagamento() {
             PaypalService.initPaymentUI().then(function() {
 
-                PaypalService.makePayment(90, "Total Amount").then(function(response) {
+                PaypalService.makePayment(52, "Valor Total").then(function(response) {
 
-                    alert("success" + JSON.stringify(response));
+                    // alert("success" + JSON.stringify(response));
+                    alert("Compra Realizada com sucesso");
 
                 }, function(error) {
 
-                    alert("Transaction Canceled");
+                    alert("Transação Cancelada");
 
                 });
 
+            });
+        }
+
+        function configAddCarrinho() {
+            $rootScope.$on('carrinho', function(event) {
+                showModal(vm.carrinhoMod);
+                vm.listaCarrinho = Listas.listaCarrinho;
+                vm.noResultCarrinho = false;
             });
         }
 

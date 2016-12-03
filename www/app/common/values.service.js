@@ -4,22 +4,23 @@ angular.module('entryPoint')
 	.value('Listas', {
 		superMercadoList: [
 		{
-			nomeMercado : 'Carrefour'
+			nome : 'Carrefour',
+			img: 'img/carre.jpg'
 
 		},
 		{
-			nomeMercado : 'Bompreço'
+			nome : 'Bompreço',
+			img: 'img/hiperl.png'
 
 		},
 		{
-			nomeMercado : 'Extra'
-
-		},
-		{
-			nomeMercado : 'Pão de Açucar'
+			nome : 'Extra',
+			img: 'img/extra.jpg'
 
 		}],
-		listasCompras : []
+		listasCompras : [],
+		listaCarrinho: {},
+		supermercadoCarrinho: {}
 	})
 	.value('AppValues', {
 		hasSupermercadoSearched : false,

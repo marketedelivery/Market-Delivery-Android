@@ -60,7 +60,7 @@
 	// "Sale == > immediate payment
 	// "Auth" for payment authorization only, to be captured separately at a later time.
 	// "Order" for taking an order, with authorization and capture to be done separately at a later time.
-	var payment = new PayPalPayment("" + total, "EUR", "" + name, "Sale");
+	var payment = new PayPalPayment("" + total, "BRL", "" + name, "Sale");
 	return payment;
 	}
 	/**

@@ -11,7 +11,7 @@
 		},
 		{
 			"codigo": 4,
-			"image": "C:\\ImagemMarketeDelivery\\imagens produtos\\feijao\\feijao-kicaldo-prento.jpg",
+			"image": "C:\\ImagemMarketeDelivery\\imagens produtos\\feijao\\feijao-kicaldo-preto.jpg",
 			"marca": "Kikaldo",
 			"nome": "Feijão",
 			"qtdEstoque": 10000,
@@ -21,8 +21,8 @@
 		},
 		{
 			"codigo": 3,
-			"image": "C:\\ImagemMarketeDelivery\\imagens produtos\\feijao\\feijao-camil-carioca.jpg",
-			"marca": "Camil",
+			"image": "C:\\ImagemMarketeDelivery\\imagens produtos\\feijao\\feijao-pantera-carioca.jpg",
+			"marca": "Pantera",
 			"nome": "Feijão",
 			"qtdEstoque": 10000,
 			"tipo": "Carioca",
@@ -31,72 +31,25 @@
 		},
 		{
 			"codigo": 4,
-			"image": "C:\\ImagemMarketeDelivery\\imagens produtos\\feijao\\feijao-kicaldo-prento.jpg",
-			"marca": "Kikaldo",
-			"nome": "Feijão",
-			"qtdEstoque": 10000,
-			"tipo": "Preto",
-			"valorUnitario": 10.15,
-			"supermercado_codigo": 1
-		},
-		{
-			"codigo": 4,
-			"image": "C:\\ImagemMarketeDelivery\\imagens produtos\\feijao\\feijao-kicaldo-prento.jpg",
-			"marca": "Kikaldo",
-			"nome": "Feijão",
-			"qtdEstoque": 10000,
-			"tipo": "Preto",
-			"valorUnitario": 10.15,
-			"supermercado_codigo": 1
-		},
-		{
-			"codigo": 3,
-			"image": "C:\\ImagemMarketeDelivery\\imagens produtos\\feijao\\feijao-camil-carioca.jpg",
-			"marca": "Camil",
+			"image": "C:\\ImagemMarketeDelivery\\imagens produtos\\feijao\\feijao-qualita-carioca.jpg",
+			"marca": "Qualita",
 			"nome": "Feijão",
 			"qtdEstoque": 10000,
 			"tipo": "Carioca",
-			"valorUnitario": 9.99,
-			"supermercado_codigo": 1
-		},
-		{
-			"codigo": 4,
-			"image": "C:\\ImagemMarketeDelivery\\imagens produtos\\feijao\\feijao-kicaldo-prento.jpg",
-			"marca": "Kikaldo",
-			"nome": "Feijão",
-			"qtdEstoque": 10000,
-			"tipo": "Preto",
 			"valorUnitario": 10.15,
 			"supermercado_codigo": 1
 		},
 		{
 			"codigo": 4,
-			"image": "C:\\ImagemMarketeDelivery\\imagens produtos\\feijao\\feijao-kicaldo-prento.jpg",
-			"marca": "Kikaldo",
-			"nome": "Feijão",
-			"qtdEstoque": 10000,
-			"tipo": "Preto",
-			"valorUnitario": 10.15,
-			"supermercado_codigo": 1
-		},
-		{
-			"codigo": 3,
-			"image": "C:\\ImagemMarketeDelivery\\imagens produtos\\feijao\\feijao-camil-carioca.jpg",
-			"marca": "Camil",
-			"nome": "Feijão",
-			"qtdEstoque": 10000,
-			"tipo": "Carioca",
-			"valorUnitario": 9.99,
-			"supermercado_codigo": 1
-		},
-		{
-			"codigo": 4,
-			"image": "C:\\ImagemMarketeDelivery\\imagens produtos\\feijao\\feijao-kicaldo-prento.jpg",
-			"marca": "Kikaldo",
+			"image": "C:\\ImagemMarketeDelivery\\imagens produtos\\feijao\\feijao-qualita-preto.jpg",
+			"marca": "Qualita",
 			"nome": "Feijão",
 			"qtdEstoque": 10000,
 			"tipo": "Preto",
 			"valorUnitario": 10.15,
 			"supermercado_codigo": 1
 		}
+		
+		
+		
 	]

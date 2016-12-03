@@ -9,13 +9,13 @@
           if(ionicLoading && timeout){
             ionicLoading.show({
               template: '<ion-spinner icon="spiral" style="backgroud-color: transparent;"></ion-spinner>',
-              duration: 60000
+              duration: 30000
             }).then(function() {
               console.log('loading...');
               timeout.cancel(timeState);
               timeState = timeout(function(){
-                //rootScope.$broadcast('eventResponse', {message: 'Problemas com a sua Conexão. Tente novamente mais tarde'});
-              }, 60000);
+                rootScope.$broadcast('eventResponse', {message: 'Problemas com a sua Conexão. Tente novamente mais tarde'});
+              }, 30000);
             });
           }
         },

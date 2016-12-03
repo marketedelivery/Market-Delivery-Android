@@ -13,7 +13,7 @@
     <span ng-show="!loading">Teste load</span>
     <i ng-show="loading" class="ion-loading-b"></i>
     </button> -->
-    <div class="item item-input" ng-show="loginCtrl.isShowForm">
+<!--     <div class="item item-input" ng-show="loginCtrl.isShowForm">
       <div class="list">
         <label class="item item-input">
           <input type="text" ng-model="loginCtrl.usuarioNm.email" placeholder="Email">
@@ -25,9 +25,9 @@
           <button class="button button-block button-positive" type="button" ng-click="loginCtrl.login()">Entrar</button>
         </label>
       </div>
-    </div>
-    <button class="button button-full button-color-mk icon-left ion-android-cart" ng-click="loginCtrl.showForm()">Entre com a sua conta</button>
-    <a class="button button-clear button-positive" ng-click="loginCtrl.openModal()">Nao possui conta? Cadastre-se.
+    </div> -->
+    <button class="button button-full button-color-mk icon-left ion-android-cart" ng-click="loginCtrl.openModal(loginCtrl.existentUserModal)">Entre com a sua conta</button>
+    <a class="button button-clear button-positive" ng-click="loginCtrl.openModal(loginCtrl.newUserModal)">Nao possui conta? Cadastre-se.
     </a>
     <!-- <button class="button button-full" ng-click="isUrl=!isUrl">URL</button>
     <label class="item item-input" ng-show="isUrl">
