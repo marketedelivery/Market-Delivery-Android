@@ -2,22 +2,23 @@
 	"supermercados" : [{
 		"id" : 1,
 		"nome" : "Carrefour",
-		"url" : "img/carre.jpg"
+		"url" : "img/carre.jpg",
+		"latitude": -8.11574999,
+		"longitude": -34.8959738
 	},
 	{
 		"id" : 2,
 		"nome" : "Extra",
-		"url" : "img/extra.jpg"
+		"url" : "img/extra.jpg",
+		"latitude": -8.10452834,
+		"longitude": -34.88975376
 	},
 	{
 		"id" : 3,
 		"nome" : "Hiper Bompreço",
-		"url" : "img/hiperl.png"
-	},
-	{
-		"id" : 4,
-		"nome" : "Deskontão",
-		"url" : "img/deskontao.jpg"
+		"url" : "img/hiperl.png",
+		"latitude": -8.11471971,
+		"longitude": -34.90218043
 	}
 	]	
 }

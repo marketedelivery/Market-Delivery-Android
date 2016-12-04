@@ -40,7 +40,7 @@
 
 			})
 
-			.state('app.conta', {
+			.state('app.supermercado', {
 				url: '/supermercado',
 				views: {
 					'menuContent': {

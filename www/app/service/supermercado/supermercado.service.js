@@ -18,7 +18,8 @@
 
         function listarSupermercado(params) {
 
-            return $http.get(url, params);
+            // return $http.get(url, params);
+            return $http.get("app/mocks/supermercados.json");
 
         }
 

@@ -41,6 +41,7 @@
 
     }
     function gologin(usuario){
+      closeModal(vm.existentUserModal);
       $rootScope.$broadcast("login", {
         loginType: Constants.NM_LOGIN,
         usuario: usuario

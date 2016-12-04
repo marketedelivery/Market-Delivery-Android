@@ -187,3 +187,10 @@
     background-color: transparent !important;
     color: #020202 !important;
 }
+.bot .scroll{
+  height: 100%
+}
+#map {
+  width: 100%;
+  height: 90%;
+}

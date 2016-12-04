@@ -75,91 +75,91 @@
 
     function listaCompras() {
       //MOCK
-      vm.listas = Listas.listasCompras;
-      if(vm.listas.length > 0){
-        vm.noLista = false;
-      }
+      // vm.listas = Listas.listasCompras;
+      // if(vm.listas.length > 0){
+      //   vm.noLista = false;
+      // }
       
       var storage = UtilFactory.getUsuarioStorage();
       var usuarioId = (storage.usuario && storage.usuario.codigo) ? storage.usuario.codigo : 0;
 
       //MOCK
-      // ListaComprasService.listaCompras(usuarioId).then(
-      //   function success(response) {
-      //     if (response.data) {
-      //       if (angular.isArray(response.data) && response.data.length > 0) {
-      //         vm.noLista = false;
+      ListaComprasService.listaCompras(usuarioId).then(
+        function success(response) {
+          if (response.data) {
+            if (angular.isArray(response.data) && response.data.length > 0) {
+              vm.noLista = false;
 
-      //         vm.listas = response.data;
-      //         Listas.listasCompras = response.data;
+              vm.listas = response.data;
+              Listas.listasCompras = response.data;
 
-      //       } else {
-      //         vm.noLista = true;
-      //         Listas.listasCompras = [];
-      //         vm.emptyLista = "Nenhuma Lista Encontrada";
-      //         vm.listas = [];
-      //       }
-      //     }
+            } else {
+              vm.noLista = true;
+              Listas.listasCompras = [];
+              vm.emptyLista = "Nenhuma Lista Encontrada";
+              vm.listas = [];
+            }
+          }
 
-      //   },
-      //   function error(error) {
-      //     vm.hasList = false;
-      //     vm.emptyLista = "Nenhuam Lista Encontrada";
+        },
+        function error(error) {
+          vm.hasList = false;
+          vm.emptyLista = "Nenhuam Lista Encontrada";
 
-      //   });
+        });
     }
 
     function criarLista() {
 
       if (vm.lista.nome && vm.lista.tipo) {
-        vm.lista.dataCriacao = $filter('date')(new Date(), 'dd/MM/yyyy');
-        vm.isEditMode = true;
+        // vm.isEditMode = true;
         vm.lista.produtos = [];
         UtilFactory.showLoad($rootScope);
         var storage = UtilFactory.getUsuarioStorage();
 
         //MOCK
 
-        UtilFactory.hideLoad(function(){
+        // UtilFactory.hideLoad(function(){
 
-            Listas.listasCompras.push(vm.lista);
-            vm.nomeLista = "";
-            closeModal(vm.novaMod);
-            vm.noLista = false;
-            vm.lista = {};
-            listaCompras();
+        //     Listas.listasCompras.push(vm.lista);
+        //     vm.nomeLista = "";
+        //     closeModal(vm.novaMod);
+        //     vm.noLista = false;
+        //     vm.lista = {};
+        //     listaCompras();
 
 
-        });
+        // });
       
-        // if (storage.usuario && storage.usuario.codigo) {
-
-        //   var params = {
-        //     nome: vm.lista.nome,
-        //     tipo: vm.lista.tipo,
-        //     dataCriacao: $filter('date')(new Date(), 'dd-MM-yyyy'),
-        //     qtd: 0,
-        //     usuario: {
-        //       codigo: storage.usuario.codigo
-        //     }
-        //   };
-        //   UtilFactory.showLoad($rootScope);
-        //   ListaComprasService.criarListaCompras(params).then(
-        //     function success(response) {
-        //       UtilFactory.hideLoad(successResponse, response);
-        //     },
-        //     function error(response) {
-        //       UtilFactory.hideLoad();
-        //     });
-        // }
+        if (storage.usuario && (storage.usuario.codigo || storage.usuario.id) ) {
+          vm.lista.tipo = "Mensal";
+          var params = {
+            nome: vm.lista.nome,
+            tipo: vm.lista.tipo,
+            dataCriacao: new Date(),
+            qtd: 0,
+            usuario: {
+              codigo: storage.usuario.codigo
+            }
+          };
+          UtilFactory.showLoad($rootScope);
+          ListaComprasService.criarListaCompras(params).then(
+            function success(response) {
+              UtilFactory.hideLoad(successResponse, response);
+            },
+            function error(response) {
+              UtilFactory.hideLoad();
+            });
+        }
 
 
 
       }
     }
     function successResponse(response){
-      vm.listas.push(response.data);
+      
       vm.nomeLista = "";
+      listaCompras();
       closeModal(vm.novaMod);
     }
 
@@ -172,7 +172,9 @@
 
     function openModal(modal, lista) {
       vm.lista = lista;
+      if(lista && lista.codigo){
       listarProdutos(lista.codigo);
+      }
       modal.show();
     }
 
@@ -196,6 +198,9 @@
       configSupermercadoModal();
       listaCompras();
 
+
+    }
+    function listarProdutos(){
 
     }
 

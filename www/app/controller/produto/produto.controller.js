@@ -125,8 +125,8 @@
         function convertProdutos(produtos) {
 
             angular.forEach(produtos, function(produto) {
-                if (angular.isString(produto.image)) {
-                    produto.imagem = produto.image.replace('C:\\ImagemMarketeDelivery\\imagens produtos', "img");
+                if (angular.isString(produto.imagem)) {
+                    produto.imagem = produto.imagem.replace('/images/', "img");
                 }
                 produto.quantidade = 0;
             });
