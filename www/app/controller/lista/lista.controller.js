@@ -28,8 +28,18 @@
       Listas.supermercadoCarrinho = vm.supermercadoSelecionado;
       closeModal(vm.superMod);
       closeModal(vm.detalheMod);
-      $rootScope.$broadcast("carrinho", {
+      angular.forEach(vm.lista.produtos, function(itemArr){
+        ListaComprasService.consultarProdutoPorId(itemArr.codigo).then(
+          function success(response){
+
+          },
+          function error(error){
+            console.log(error);
+          }
+        );
       });
+      // $rootScope.$broadcast("carrinho", {
+      // });
     }
     function configNovaListaModal() {
 
@@ -74,28 +84,18 @@
 
 
     function listaCompras() {
-      //MOCK
-      // vm.listas = Listas.listasCompras;
-      // if(vm.listas.length > 0){
-      //   vm.noLista = false;
-      // }
-      
       var storage = UtilFactory.getUsuarioStorage();
       var usuarioId = (storage.usuario && storage.usuario.codigo) ? storage.usuario.codigo : 0;
 
-      //MOCK
       ListaComprasService.listaCompras(usuarioId).then(
         function success(response) {
           if (response.data) {
             if (angular.isArray(response.data) && response.data.length > 0) {
               vm.noLista = false;
-
               vm.listas = response.data;
-              Listas.listasCompras = response.data;
 
             } else {
               vm.noLista = true;
-              Listas.listasCompras = [];
               vm.emptyLista = "Nenhuma Lista Encontrada";
               vm.listas = [];
             }
@@ -112,25 +112,11 @@
     function criarLista() {
 
       if (vm.lista.nome && vm.lista.tipo) {
-        // vm.isEditMode = true;
+
         vm.lista.produtos = [];
         UtilFactory.showLoad($rootScope);
         var storage = UtilFactory.getUsuarioStorage();
 
-        //MOCK
-
-        // UtilFactory.hideLoad(function(){
-
-        //     Listas.listasCompras.push(vm.lista);
-        //     vm.nomeLista = "";
-        //     closeModal(vm.novaMod);
-        //     vm.noLista = false;
-        //     vm.lista = {};
-        //     listaCompras();
-
-
-        // });
-      
         if (storage.usuario && (storage.usuario.codigo || storage.usuario.id) ) {
           vm.lista.tipo = "Mensal";
           var params = {
@@ -157,7 +143,7 @@
       }
     }
     function successResponse(response){
-      
+
       vm.nomeLista = "";
       listaCompras();
       closeModal(vm.novaMod);
@@ -200,9 +186,25 @@
 
 
     }
-    function listarProdutos(){
-
+    function listarProdutos(listaId){
+      ListaComprasService.buscarItemPorLista(listaId).then(
+        function success(response){
+        treatImage(response.data);
+        vm.lista.produtos = response.data;
+      },
+    function error(error){
+      console.log(error);
+    });
     }
+
+    function treatImage(produtosArr){
+      angular.forEach(produtosArr, function(item){
+        if(item.produto && angular.isString(item.produto.imagem)){
+          item.produto.imagem = item.produto.imagem.replace('/images', 'img');
+        }
+      });
+    }
+
 
     init();
 

@@ -147,22 +147,22 @@
 
             var storage = UtilFactory.getUsuarioStorage();
             var usuarioId = (storage.usuario && storage.usuario.codigo) ? storage.usuario.codigo : 0;
-            vm.listas = Listas.listasCompras;
-            //MOCK
-            // ListaComprasService.listaCompras(usuarioId).then(
-            //   function success(response) {
-            //     if (response.data) {
-            //       if (angular.isArray(response.data) && response.data.length > 0) {
-            //         vm.listas = response.data;
-            //       } else {
-            //         vm.listas = [];
-            //       }
-            //     }
 
-            //   },
-            //   function error(error) {
 
-            //   });
+            ListaComprasService.listaCompras(usuarioId).then(
+              function success(response) {
+                if (response.data) {
+                  if (angular.isArray(response.data) && response.data.length > 0) {
+                    vm.listas = response.data;
+                  } else {
+                    vm.listas = [];
+                  }
+                }
+
+              },
+              function error(error) {
+
+              });
 
         }
 
@@ -170,46 +170,49 @@
 
             //MOCK
             if (vm.listaSelecionada) {
-            UtilFactory.showLoad($rootScope);
-                angular.forEach(Listas.listasCompras, function(item) {
-                    if (item.nome === vm.listaSelecionada.nome) {
-                        item.produtos.push(produto);
-                    }
-                });
-                UtilFactory.hideLoad(function() {
-                    UtilFactory.showDialog($rootScope, {
-                        message: 'Item Adicionado'
-                    });
-                });
+            // UtilFactory.showLoad($rootScope);
+            //     angular.forEach(Listas.listasCompras, function(item) {
+            //         if (item.nome === vm.listaSelecionada.nome) {
+            //             item.produtos.push(produto);
+            //         }
+            //     });
+            //     UtilFactory.hideLoad(function() {
+            //         UtilFactory.showDialog($rootScope, {
+            //             message: 'Item Adicionado'
+            //         });
+            //     });
             }
 
 
             var userStorage = UtilFactory.getUsuarioStorage();
             var usuario = userStorage.usuario;
             //MOCK
-            if (usuario && usuario.codigo && produto) {
-                var item = {
-                    "lista": {
-                        "codigo": vm.listaSelecionada,
-                        "usuario": {
-                            "codigo": usuario.codigo
+            ListaComprasService.pesquisarListaPorId(vm.listaSelecionada.codigo).then(
+              function success(response){
+                if (usuario && usuario.codigo && produto) {
+                    var item = {
+                        "lista": response.data,
+                        "precoTotal": 0,
+                        "produto": {
+                            "codigo": produto.codigo
+                        },
+                        "qtdProduto": produto.quantidade
+                    };
+                    ProdutoService.criarItem(item).then(
+                        function success(response) {
+                            console.log('success');
+                        },
+                        function error(error) {
+                            console.log('error');
                         }
-                    },
-                    "precoTotal": 0,
-                    "produto": {
-                        "codigo": produto.codigo
-                    },
-                    "qtdProduto": produto.quantidade
-                };
-                ProdutoService.criarItem(item).then(
-                    function success(response) {
-                        console.log('success');
-                    },
-                    function error(error) {
-                        console.log('error');
-                    }
-                );
-            }
+                    );
+                }
+              },
+              function error(error){
+                console.log(error);
+              }
+            );
+
 
         }
     }

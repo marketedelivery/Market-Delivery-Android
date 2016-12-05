@@ -13,7 +13,10 @@
     var exports = {
       criarListaCompras: criarListaCompras,
       listaCompras: listaCompras,
-      getUsuario: getUsuario
+      getUsuario: getUsuario,
+      pesquisarListaPorId: pesquisarListaPorId,
+      buscarItemPorLista: buscarItemPorLista,
+      consultarProdutoPorId: consultarProdutoPorId
     };
 
     return exports;
@@ -39,6 +42,13 @@
     function buscarItemPorLista(listaId){
       var params = {codigo: listaId};
       return $http.get(url + "/item/consultarItensPorLista",{params: params});
+    }
+    function pesquisarListaPorId(listaId){
+      var params = {codigo: listaId};
+      return $http.get(url + "/listaCompras/pesquisarListaPorId",{params: params});
+    }
+    function consultarProdutoPorId(produtoId){
+      return $http.get("http://localhost:8080/Carrefour_WS/rest/produto/carrefour/consultarProdutoPorId/" + produtoId);
     }
 
 
